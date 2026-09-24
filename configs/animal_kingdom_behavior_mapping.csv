@@ -1,0 +1,16 @@
+action_id,action_name,interim_label,reason
+68,Keeping still,CALM,Low locomotor activity and stationary posture; used operationally as a lower-arousal proxy.
+133,Walking,CALM,Ordinary lower-intensity locomotion; used operationally as a lower-arousal proxy.
+2,Attending,CALM,Baseline orienting and visual attention behavior; used operationally as a lower-arousal proxy.
+102,Sensing,CALM,Environmental monitoring/investigation; used operationally as a lower-arousal proxy.
+40,Eating,CALM,Maintenance and nutritive behavior; used operationally as a lower-arousal proxy.
+139,Yawning,CALM,Context-dependent behavior; retained as CALM for this interim mapping by project decision.
+100,Running,AGITATED,High locomotor activity; used as a higher-arousal behavioural proxy.
+67,Jumping,AGITATED,Elevated physical exertion and dynamic posture shift; used as a higher-arousal proxy.
+1,Attacking,AGITATED,Overt agonistic/aggressive encounter; used as a higher-arousal proxy.
+14,Chasing,AGITATED,High-speed pursuit behavior; used as a higher-arousal proxy.
+3,Barking,AGITATED,Vocalisation can occur during elevated arousal/stress contexts; used as a higher-arousal proxy.
+118,Startled,AGITATED,Sudden reactive motor response to unexpected stimulus; used as a higher-arousal proxy.
+8,Biting,AGITATED,Agonistic/contact offensive or defensive action; used as a higher-arousal proxy.
+51,Fleeing,AGITATED,Escape/retreat behaviour can occur during fear/stress responses; used as a higher-arousal proxy.
+91,Preying,EXCLUDE,Predatory behaviour does not reliably indicate emotional agitation; excluded from binary mapping.

@@ -1,0 +1,69 @@
+clip_id,source_path,split,action,behavior_label,behavior_name,duration,fps,sampled_fps,number_of_sampled_frames,valid_pose_frames,invalid_pose_frames,ambiguous_frames,mean_detection_confidence,mean_keypoint_confidence,valid_frame_ratio,cache_path
+AVFJUXDO,data/raw/animal_kingdom/video/AVFJUXDO.mp4,test,Fleeing,1,AGITATED,1.71,24.0,8.0,14,13,1,4,0.5941,0.6013,0.9286,data/processed/animal_kingdom/pose_cache/test/AVFJUXDO.npz
+CSHALXDO,data/raw/animal_kingdom/video/CSHALXDO.mp4,test,Attacking,1,AGITATED,3.5,24.0,8.0,28,28,0,1,0.6304,0.5596,1.0,data/processed/animal_kingdom/pose_cache/test/CSHALXDO.npz
+DCVGZXDO,data/raw/animal_kingdom/video/DCVGZXDO.mp4,test,Attacking,1,AGITATED,5.92,24.0,8.0,47,47,0,47,0.8287,0.5425,1.0,data/processed/animal_kingdom/pose_cache/test/DCVGZXDO.npz
+DWOLCXDO,data/raw/animal_kingdom/video/DWOLCXDO.mp4,test,Attacking; Chasing,1,AGITATED,2.21,24.0,8.0,18,18,0,11,0.5685,0.5618,1.0,data/processed/animal_kingdom/pose_cache/test/DWOLCXDO.npz
+EBOJNFGA,data/raw/animal_kingdom/video/EBOJNFGA.mp4,test,Running,1,AGITATED,2.62,24.0,8.0,21,18,3,2,0.496,0.4929,0.8571,data/processed/animal_kingdom/pose_cache/test/EBOJNFGA.npz
+EPQDGFGA,data/raw/animal_kingdom/video/EPQDGFGA.mp4,test,Running,1,AGITATED,6.12,24.0,8.0,49,46,3,12,0.5587,0.5343,0.9388,data/processed/animal_kingdom/pose_cache/test/EPQDGFGA.npz
+ETOKQXGD,data/raw/animal_kingdom/video/ETOKQXGD.mp4,test,Chasing,1,AGITATED,1.33,24.0,8.0,11,11,0,0,0.6323,0.523,1.0,data/processed/animal_kingdom/pose_cache/test/ETOKQXGD.npz
+EVQRFFGA,data/raw/animal_kingdom/video/EVQRFFGA.mp4,test,Walking,0,CALM,5.12,24.0,8.0,41,41,0,24,0.542,0.5291,1.0,data/processed/animal_kingdom/pose_cache/test/EVQRFFGA.npz
+GICIEXDO,data/raw/animal_kingdom/video/GICIEXDO.mp4,test,Running,1,AGITATED,1.0,24.0,8.0,8,6,2,0,0.416,0.5519,0.75,data/processed/animal_kingdom/pose_cache/test/GICIEXDO.npz
+GNCBFXGD,data/raw/animal_kingdom/video/GNCBFXGD.mp4,test,Biting; Attacking,1,AGITATED,5.12,24.0,8.0,41,34,7,10,0.4707,0.5207,0.8293,data/processed/animal_kingdom/pose_cache/test/GNCBFXGD.npz
+IKAMHFGA,data/raw/animal_kingdom/video/IKAMHFGA.mp4,test,Running,1,AGITATED,2.0,24.0,8.0,16,16,0,0,0.8045,0.5407,1.0,data/processed/animal_kingdom/pose_cache/test/IKAMHFGA.npz
+KURRZFGA,data/raw/animal_kingdom/video/KURRZFGA.mp4,test,Running,1,AGITATED,1.0,24.0,8.0,8,8,0,2,0.5582,0.5685,1.0,data/processed/animal_kingdom/pose_cache/test/KURRZFGA.npz
+PEPZMXDO,data/raw/animal_kingdom/video/PEPZMXDO.mp4,test,Jumping,1,AGITATED,2.62,24.0,8.0,21,19,2,0,0.7167,0.5729,0.9048,data/processed/animal_kingdom/pose_cache/test/PEPZMXDO.npz
+PPOLHFGA,data/raw/animal_kingdom/video/PPOLHFGA.mp4,test,Running,1,AGITATED,3.42,24.0,8.0,27,23,4,2,0.4888,0.5412,0.8519,data/processed/animal_kingdom/pose_cache/test/PPOLHFGA.npz
+RAUURFGA,data/raw/animal_kingdom/video/RAUURFGA.mp4,test,Running,1,AGITATED,0.42,24.0,8.0,3,2,1,2,0.3414,0.5259,0.6667,data/processed/animal_kingdom/pose_cache/test/RAUURFGA.npz
+SKCIHXDO,data/raw/animal_kingdom/video/SKCIHXDO.mp4,test,Chasing,1,AGITATED,1.71,24.0,8.0,14,11,3,8,0.5112,0.535,0.7857,data/processed/animal_kingdom/pose_cache/test/SKCIHXDO.npz
+SOXNEFGA,data/raw/animal_kingdom/video/SOXNEFGA.mp4,test,Walking,0,CALM,1.0,24.0,8.0,8,8,0,1,0.7102,0.4456,1.0,data/processed/animal_kingdom/pose_cache/test/SOXNEFGA.npz
+TNANEFGA,data/raw/animal_kingdom/video/TNANEFGA.mp4,test,Walking,0,CALM,6.0,24.0,8.0,48,42,6,1,0.5405,0.5077,0.875,data/processed/animal_kingdom/pose_cache/test/TNANEFGA.npz
+TVAUKXGD,data/raw/animal_kingdom/video/TVAUKXGD.mp4,test,Biting; Attacking; Chasing,1,AGITATED,6.42,24.0,8.0,51,40,11,9,0.5446,0.5213,0.7843,data/processed/animal_kingdom/pose_cache/test/TVAUKXGD.npz
+USTTFFGA,data/raw/animal_kingdom/video/USTTFFGA.mp4,test,Running,1,AGITATED,7.83,24.0,8.0,63,63,0,0,0.8378,0.5631,1.0,data/processed/animal_kingdom/pose_cache/test/USTTFFGA.npz
+ZPTIZXDO,data/raw/animal_kingdom/video/ZPTIZXDO.mp4,test,Running; Jumping; Walking,1,AGITATED,3.62,24.0,8.0,29,25,4,0,0.6436,0.5644,0.8621,data/processed/animal_kingdom/pose_cache/test/ZPTIZXDO.npz
+AFLPRFGA,data/raw/animal_kingdom/video/AFLPRFGA.mp4,train,Running,1,AGITATED,3.33,24.0,8.0,27,26,1,0,0.7918,0.5253,0.963,data/processed/animal_kingdom/pose_cache/train/AFLPRFGA.npz
+AWJEUGCS,data/raw/animal_kingdom/video/AWJEUGCS.mp4,train,Startled; Barking,1,AGITATED,9.83,24.0,8.0,79,63,16,8,0.399,0.5456,0.7975,data/processed/animal_kingdom/pose_cache/train/AWJEUGCS.npz
+BLUYUTEK,data/raw/animal_kingdom/video/BLUYUTEK.mp4,train,Walking; Sensing; Jumping,1,AGITATED,1.12,24.0,8.0,9,7,2,1,0.6144,0.587,0.7778,data/processed/animal_kingdom/pose_cache/train/BLUYUTEK.npz
+BUKSUFGA,data/raw/animal_kingdom/video/BUKSUFGA.mp4,train,Running,1,AGITATED,4.83,24.0,8.0,39,30,9,1,0.5392,0.4912,0.7692,data/processed/animal_kingdom/pose_cache/train/BUKSUFGA.npz
+CKFVZXGD,data/raw/animal_kingdom/video/CKFVZXGD.mp4,train,Attending,0,CALM,1.71,24.0,8.0,14,10,4,1,0.5664,0.521,0.7143,data/processed/animal_kingdom/pose_cache/train/CKFVZXGD.npz
+CUFGUGCS,data/raw/animal_kingdom/video/CUFGUGCS.mp4,train,Startled; Barking; Keeping still; Attacking,1,AGITATED,10.21,24.0,8.0,82,63,19,16,0.3795,0.5458,0.7683,data/processed/animal_kingdom/pose_cache/train/CUFGUGCS.npz
+DUZPVFGA,data/raw/animal_kingdom/video/DUZPVFGA.mp4,train,Running,1,AGITATED,0.62,24.0,8.0,5,4,1,2,0.5339,0.5404,0.8,data/processed/animal_kingdom/pose_cache/train/DUZPVFGA.npz
+EDHHMXGD,data/raw/animal_kingdom/video/EDHHMXGD.mp4,train,Running,1,AGITATED,2.83,24.0,8.0,23,23,0,0,0.8137,0.5731,1.0,data/processed/animal_kingdom/pose_cache/train/EDHHMXGD.npz
+EHXIFXGD,data/raw/animal_kingdom/video/EHXIFXGD.mp4,train,Walking; Attending,0,CALM,2.0,24.0,8.0,16,16,0,6,0.5198,0.5581,1.0,data/processed/animal_kingdom/pose_cache/train/EHXIFXGD.npz
+EOFBMBME,data/raw/animal_kingdom/video/EOFBMBME.mp4,train,Running,1,AGITATED,4.83,24.0,8.0,39,38,1,3,0.6276,0.5875,0.9744,data/processed/animal_kingdom/pose_cache/train/EOFBMBME.npz
+EUKRNXGD,data/raw/animal_kingdom/video/EUKRNXGD.mp4,train,Walking,0,CALM,16.0,24.0,8.0,128,79,49,40,0.4837,0.5588,0.6172,data/processed/animal_kingdom/pose_cache/train/EUKRNXGD.npz
+GWRPTXDO,data/raw/animal_kingdom/video/GWRPTXDO.mp4,train,Sensing,0,CALM,3.92,24.0,8.0,31,31,0,0,0.8595,0.5316,1.0,data/processed/animal_kingdom/pose_cache/train/GWRPTXDO.npz
+HPRSIXDO,data/raw/animal_kingdom/video/HPRSIXDO.mp4,train,Running; Fleeing,1,AGITATED,2.12,24.0,8.0,17,15,2,1,0.6128,0.5692,0.8824,data/processed/animal_kingdom/pose_cache/train/HPRSIXDO.npz
+ICCBOFGA,data/raw/animal_kingdom/video/ICCBOFGA.mp4,train,Walking,0,CALM,10.92,24.0,8.0,87,60,27,8,0.4223,0.5129,0.6897,data/processed/animal_kingdom/pose_cache/train/ICCBOFGA.npz
+IXJLIXGD,data/raw/animal_kingdom/video/IXJLIXGD.mp4,train,Attending; Yawning,0,CALM,1.12,24.0,8.0,9,9,0,5,0.6445,0.578,1.0,data/processed/animal_kingdom/pose_cache/train/IXJLIXGD.npz
+JFPCUGCS,data/raw/animal_kingdom/video/JFPCUGCS.mp4,train,Barking,1,AGITATED,8.5,24.0,8.0,68,53,15,8,0.3924,0.5459,0.7794,data/processed/animal_kingdom/pose_cache/train/JFPCUGCS.npz
+JLQYOXGD,data/raw/animal_kingdom/video/JLQYOXGD.mp4,train,Attending,0,CALM,1.71,24.0,8.0,14,14,0,6,0.6125,0.5767,1.0,data/processed/animal_kingdom/pose_cache/train/JLQYOXGD.npz
+KAFGDXGD,data/raw/animal_kingdom/video/KAFGDXGD.mp4,train,Running,1,AGITATED,2.92,24.0,8.0,23,22,1,2,0.5589,0.576,0.9565,data/processed/animal_kingdom/pose_cache/train/KAFGDXGD.npz
+KUZYPXGD,data/raw/animal_kingdom/video/KUZYPXGD.mp4,train,Sensing,0,CALM,1.92,24.0,8.0,15,15,0,0,0.6644,0.4185,1.0,data/processed/animal_kingdom/pose_cache/train/KUZYPXGD.npz
+LDTFJXGD,data/raw/animal_kingdom/video/LDTFJXGD.mp4,train,Walking,0,CALM,4.42,24.0,8.0,35,35,0,4,0.7453,0.5149,1.0,data/processed/animal_kingdom/pose_cache/train/LDTFJXGD.npz
+LKEERFGA,data/raw/animal_kingdom/video/LKEERFGA.mp4,train,Running,1,AGITATED,1.71,24.0,8.0,14,14,0,8,0.5456,0.5594,1.0,data/processed/animal_kingdom/pose_cache/train/LKEERFGA.npz
+MVDCSFGA,data/raw/animal_kingdom/video/MVDCSFGA.mp4,train,Walking,0,CALM,4.0,24.0,8.0,32,32,0,0,0.7724,0.5733,1.0,data/processed/animal_kingdom/pose_cache/train/MVDCSFGA.npz
+OOTCBXGD,data/raw/animal_kingdom/video/OOTCBXGD.mp4,train,Running,1,AGITATED,1.92,24.0,8.0,15,15,0,0,0.7744,0.55,1.0,data/processed/animal_kingdom/pose_cache/train/OOTCBXGD.npz
+OQQRVXGD,data/raw/animal_kingdom/video/OQQRVXGD.mp4,train,Eating,0,CALM,1.33,24.0,8.0,11,3,8,0,0.3835,0.5034,0.2727,data/processed/animal_kingdom/pose_cache/train/OQQRVXGD.npz
+ORBGIGCS,data/raw/animal_kingdom/video/ORBGIGCS.mp4,train,Startled; Keeping still,1,AGITATED,1.71,24.0,8.0,14,9,5,3,0.3776,0.5569,0.6429,data/processed/animal_kingdom/pose_cache/train/ORBGIGCS.npz
+OTNOKXDO,data/raw/animal_kingdom/video/OTNOKXDO.mp4,train,Barking,1,AGITATED,2.42,24.0,8.0,19,19,0,0,0.8859,0.6327,1.0,data/processed/animal_kingdom/pose_cache/train/OTNOKXDO.npz
+PRXWIXGD,data/raw/animal_kingdom/video/PRXWIXGD.mp4,train,Running,1,AGITATED,2.12,24.0,8.0,17,1,16,0,0.3018,0.4204,0.0588,data/processed/animal_kingdom/pose_cache/train/PRXWIXGD.npz
+PWJTIFGA,data/raw/animal_kingdom/video/PWJTIFGA.mp4,train,Running,1,AGITATED,1.0,24.0,8.0,8,5,3,1,0.6264,0.5632,0.625,data/processed/animal_kingdom/pose_cache/train/PWJTIFGA.npz
+QFMMRXGD,data/raw/animal_kingdom/video/QFMMRXGD.mp4,train,Running,1,AGITATED,2.33,24.0,8.0,19,1,18,0,0.2631,0.5726,0.0526,data/processed/animal_kingdom/pose_cache/train/QFMMRXGD.npz
+QOZTQGCS,data/raw/animal_kingdom/video/QOZTQGCS.mp4,train,Startled,1,AGITATED,1.33,24.0,8.0,11,8,3,2,0.4108,0.5581,0.7273,data/processed/animal_kingdom/pose_cache/train/QOZTQGCS.npz
+RJALNXGD,data/raw/animal_kingdom/video/RJALNXGD.mp4,train,Running,1,AGITATED,4.0,24.0,8.0,32,3,29,0,0.3486,0.5131,0.0938,data/processed/animal_kingdom/pose_cache/train/RJALNXGD.npz
+RTCFXXDO,data/raw/animal_kingdom/video/RTCFXXDO.mp4,train,Barking,1,AGITATED,1.21,24.0,8.0,10,10,0,0,0.8042,0.4354,1.0,data/processed/animal_kingdom/pose_cache/train/RTCFXXDO.npz
+SCAYVXGD,data/raw/animal_kingdom/video/SCAYVXGD.mp4,train,Walking; Attending; Yawning,0,CALM,3.12,24.0,8.0,25,25,0,9,0.5504,0.5689,1.0,data/processed/animal_kingdom/pose_cache/train/SCAYVXGD.npz
+SFSRCXGD,data/raw/animal_kingdom/video/SFSRCXGD.mp4,train,Running,1,AGITATED,1.33,24.0,8.0,11,11,0,0,0.8089,0.5733,1.0,data/processed/animal_kingdom/pose_cache/train/SFSRCXGD.npz
+SMLRJXGD,data/raw/animal_kingdom/video/SMLRJXGD.mp4,train,Keeping still,0,CALM,3.21,24.0,8.0,26,26,0,0,0.9164,0.66,1.0,data/processed/animal_kingdom/pose_cache/train/SMLRJXGD.npz
+TTOSQFGA,data/raw/animal_kingdom/video/TTOSQFGA.mp4,train,Running,1,AGITATED,5.83,24.0,8.0,47,39,8,14,0.4282,0.524,0.8298,data/processed/animal_kingdom/pose_cache/train/TTOSQFGA.npz
+UXNFAXGD,data/raw/animal_kingdom/video/UXNFAXGD.mp4,train,Eating,0,CALM,2.71,24.0,8.0,22,15,7,4,0.4596,0.4283,0.6818,data/processed/animal_kingdom/pose_cache/train/UXNFAXGD.npz
+VDDGCFGA,data/raw/animal_kingdom/video/VDDGCFGA.mp4,train,Running,1,AGITATED,3.0,24.0,8.0,24,24,0,1,0.7331,0.5623,1.0,data/processed/animal_kingdom/pose_cache/train/VDDGCFGA.npz
+VGALMFGA,data/raw/animal_kingdom/video/VGALMFGA.mp4,train,Running,1,AGITATED,4.0,24.0,8.0,32,30,2,2,0.647,0.5469,0.9375,data/processed/animal_kingdom/pose_cache/train/VGALMFGA.npz
+WZUIAXGD,data/raw/animal_kingdom/video/WZUIAXGD.mp4,train,Attending,0,CALM,3.12,24.0,8.0,25,23,2,0,0.666,0.4749,0.92,data/processed/animal_kingdom/pose_cache/train/WZUIAXGD.npz
+XAKUOXGD,data/raw/animal_kingdom/video/XAKUOXGD.mp4,train,Running,1,AGITATED,0.21,24.0,8.0,2,2,0,0,0.4432,0.3918,1.0,data/processed/animal_kingdom/pose_cache/train/XAKUOXGD.npz
+YEYILXGD,data/raw/animal_kingdom/video/YEYILXGD.mp4,train,Walking,0,CALM,1.42,24.0,8.0,11,11,0,0,0.7433,0.5912,1.0,data/processed/animal_kingdom/pose_cache/train/YEYILXGD.npz
+YKJFXGCS,data/raw/animal_kingdom/video/YKJFXGCS.mp4,train,Barking,1,AGITATED,1.62,24.0,8.0,13,5,8,0,0.4655,0.5706,0.3846,data/processed/animal_kingdom/pose_cache/train/YKJFXGCS.npz
+YLZBNFGA,data/raw/animal_kingdom/video/YLZBNFGA.mp4,train,Running,1,AGITATED,0.83,24.0,8.0,7,7,0,5,0.4133,0.5475,1.0,data/processed/animal_kingdom/pose_cache/train/YLZBNFGA.npz
+YSWGBGCS,data/raw/animal_kingdom/video/YSWGBGCS.mp4,train,Keeping still,0,CALM,0.42,24.0,8.0,3,2,1,0,0.3683,0.5812,0.6667,data/processed/animal_kingdom/pose_cache/train/YSWGBGCS.npz
+ZGNADXGD,data/raw/animal_kingdom/video/ZGNADXGD.mp4,train,Running,1,AGITATED,1.12,24.0,8.0,9,8,1,0,0.6703,0.5349,0.8889,data/processed/animal_kingdom/pose_cache/train/ZGNADXGD.npz
+ZPJLBFGA,data/raw/animal_kingdom/video/ZPJLBFGA.mp4,train,Running,1,AGITATED,5.0,24.0,8.0,40,32,8,11,0.4307,0.5188,0.8,data/processed/animal_kingdom/pose_cache/train/ZPJLBFGA.npz

@@ -1,0 +1,32 @@
+data:
+  split_csv: "outputs/mamba_train_val_split.csv"
+  manifest_csv: "outputs/mamba_window_manifest.csv"
+  cache_npz: "data/processed/animal_kingdom/mamba_cache/mamba_windows_dataset.npz"
+  sequence_length: 16
+  in_features: 72
+  sampling_rate: 8.0
+
+model:
+  d_model: 64
+  num_layers: 2
+  d_state: 16
+  d_conv: 4
+  expand: 2
+  dropout: 0.1
+  head_dropout: 0.2
+
+training:
+  batch_size: 8
+  lr: 0.001
+  weight_decay: 0.0001
+  epochs: 40
+  patience: 10
+  amp: true
+  seed: 42
+  checkpoint_dir: "checkpoints/mamba_behavior"
+
+baseline:
+  hidden_dim: 32
+  dropout: 0.2
+  epochs: 40
+  checkpoint_dir: "checkpoints/baseline_behavior"

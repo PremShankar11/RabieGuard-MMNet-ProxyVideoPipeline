@@ -1,0 +1,107 @@
+{
+  "model_name": "Zero Rabies-MMNet Video V2 (exp_d_temporal_tracking)",
+  "version": "2.0.0-frozen",
+  "status": "FROZEN",
+  "frozen_timestamp": "2026-09-23T23:00:00Z",
+  "scientific_role": "Video Behavioral Screening / Risk-Assessment Component (NOT a rabies diagnostic system)",
+  "checkpoint_path": "checkpoints/mamba_behavior_v2/final.pt",
+  "pose_checkpoint_path": "checkpoints/dog_pose/best.pt",
+  "architecture": {
+    "model_type": "Mamba S6",
+    "description": "Bi-directional Selective State Space sequence model",
+    "num_layers": 2,
+    "d_model": 64,
+    "d_state": 16,
+    "d_conv": 4,
+    "expand": 2,
+    "dropout": 0.1,
+    "head_dropout": 0.2,
+    "trainable_parameters": 136257
+  },
+  "input_specifications": {
+    "keypoint_count": 24,
+    "coordinates_per_keypoint": 3,
+    "pose_features": 72,
+    "reliability_features": 3,
+    "total_in_features": 75,
+    "sampling_rate_fps": 8.0,
+    "sequence_length": 16,
+    "window_duration_seconds": 2.0,
+    "normalization_method": "body_relative",
+    "normalization_details": "Centered at pelvis/mid-hip midpoint, scaled by torso length/diagonal, clipped to [-3.0, 3.0]",
+    "reliability_mode": "both",
+    "reliability_details": "Mean confidence, valid keypoint fraction, and interpolation flag appended to features and used in sequence validity scoring",
+    "tracking_mode": "temporal_consistent",
+    "tracking_details": "Greedy IoU and centroid distance continuity with area-ratio gating to track the primary canine across frames and suppress identity-hopping in multi-dog scenes"
+  },
+  "training_configuration": {
+    "seed": 42,
+    "development_clips": 47,
+    "validation_scheme": "5-fold stratified cross-validation at clip level",
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 8,
+    "epochs": 35,
+    "patience": 8,
+    "amp": true,
+    "loss_function": "BCEWithLogitsLoss with partition-specific class weights"
+  },
+  "operational_scoring": {
+    "target_classes": ["CALM", "AGITATED"],
+    "decision_threshold": 0.50,
+    "score_formula": "round(clip_probability_agitated * 100)",
+    "score_range": [0, 100],
+    "interpretive_bands": [
+      {
+        "range": [0, 35],
+        "band": "Low Agitation / Calm-like",
+        "description": "Low observed behavioral arousal under operational scoring scheme"
+      },
+      {
+        "range": [36, 65],
+        "band": "Moderate Activity / Transitional",
+        "description": "Moderate observed behavioral arousal / transitional behavioral dynamics"
+      },
+      {
+        "range": [66, 100],
+        "band": "High Agitation",
+        "description": "High observed behavioral arousal under operational scoring scheme"
+      }
+    ],
+    "disclaimer": "Operational behavioral-arousal proxy scores derived from Animal Kingdom locomotion and posture annotations. They are NOT clinical rabies diagnoses."
+  },
+  "quality_thresholds": {
+    "overall_rules": {
+      "GOOD": "valid_frame_percentage >= 75.0 and mean_pose_confidence >= 0.45 and ambiguous_frame_percentage <= 30.0",
+      "FAIR": "valid_frame_percentage >= 50.0 and mean_pose_confidence >= 0.30 and ambiguous_frame_percentage <= 50.0",
+      "LIMITED": "valid_frame_percentage < 50.0 or mean_pose_confidence < 0.30 or ambiguous_frame_percentage > 50.0"
+    }
+  },
+  "cross_validation_metrics": {
+    "folds": 5,
+    "development_clips": 47,
+    "mean_balanced_accuracy": 74.17,
+    "std_balanced_accuracy": 10.00,
+    "mean_accuracy": 74.44,
+    "mean_f1": 0.7932,
+    "calm_recall": 71.67,
+    "agitated_recall": 76.67
+  },
+  "locked_test_metrics": {
+    "test_clips": 21,
+    "status": "LOCKED (Evaluated strictly once on frozen model)",
+    "accuracy": 61.90,
+    "balanced_accuracy": 50.00,
+    "f1_score": 0.7500,
+    "precision": 0.8571,
+    "agitated_recall": 66.67,
+    "calm_recall": 33.33,
+    "confusion_matrix": {
+      "TN": 1,
+      "FP": 2,
+      "FN": 6,
+      "TP": 12
+    }
+  }
+}

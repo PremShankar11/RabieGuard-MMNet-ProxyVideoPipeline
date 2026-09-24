@@ -1,0 +1,69 @@
+clip_id,species,action_id,action_name,interim_label,split,video_path,duration_seconds,fps,frame_count,width,height
+AVFJUXDO,Wild Dog,51,Fleeing,AGITATED,test,data/raw/animal_kingdom/video/AVFJUXDO.mp4,1.71,24.0,41,640,360
+CSHALXDO,Wild Dog,1,Attacking,AGITATED,test,data/raw/animal_kingdom/video/CSHALXDO.mp4,3.5,24.0,84,640,360
+DCVGZXDO,Wild Dog,1,Attacking,AGITATED,test,data/raw/animal_kingdom/video/DCVGZXDO.mp4,5.92,24.0,142,640,360
+DWOLCXDO,Wild Dog,1; 14,Attacking; Chasing,AGITATED,test,data/raw/animal_kingdom/video/DWOLCXDO.mp4,2.21,24.0,53,640,360
+EBOJNFGA,Wild Dog,100,Running,AGITATED,test,data/raw/animal_kingdom/video/EBOJNFGA.mp4,2.62,24.0,63,640,360
+EPQDGFGA,Wild Dog,100,Running,AGITATED,test,data/raw/animal_kingdom/video/EPQDGFGA.mp4,6.12,24.0,147,640,360
+ETOKQXGD,Dog,14,Chasing,AGITATED,test,data/raw/animal_kingdom/video/ETOKQXGD.mp4,1.33,24.0,32,640,360
+EVQRFFGA,Wild Dog,133,Walking,CALM,test,data/raw/animal_kingdom/video/EVQRFFGA.mp4,5.12,24.0,123,640,360
+GICIEXDO,Wild Dog,100,Running,AGITATED,test,data/raw/animal_kingdom/video/GICIEXDO.mp4,1.0,24.0,24,640,360
+GNCBFXGD,Dog,8; 1,Biting; Attacking,AGITATED,test,data/raw/animal_kingdom/video/GNCBFXGD.mp4,5.12,24.0,123,640,360
+IKAMHFGA,Wild Dog,100,Running,AGITATED,test,data/raw/animal_kingdom/video/IKAMHFGA.mp4,2.0,24.0,48,640,360
+KURRZFGA,Wild Dog,100,Running,AGITATED,test,data/raw/animal_kingdom/video/KURRZFGA.mp4,1.0,24.0,24,640,360
+PEPZMXDO,Wild Dog,67,Jumping,AGITATED,test,data/raw/animal_kingdom/video/PEPZMXDO.mp4,2.62,24.0,63,640,360
+PPOLHFGA,Wild Dog,100,Running,AGITATED,test,data/raw/animal_kingdom/video/PPOLHFGA.mp4,3.42,24.0,82,640,360
+RAUURFGA,Wild Dog,100,Running,AGITATED,test,data/raw/animal_kingdom/video/RAUURFGA.mp4,0.42,24.0,10,640,360
+SKCIHXDO,Wild Dog,14,Chasing,AGITATED,test,data/raw/animal_kingdom/video/SKCIHXDO.mp4,1.71,24.0,41,640,360
+SOXNEFGA,Wild Dog,133,Walking,CALM,test,data/raw/animal_kingdom/video/SOXNEFGA.mp4,1.0,24.0,24,640,360
+TNANEFGA,Wild Dog,133,Walking,CALM,test,data/raw/animal_kingdom/video/TNANEFGA.mp4,6.0,24.0,144,640,360
+TVAUKXGD,Dog,8; 1; 14,Biting; Attacking; Chasing,AGITATED,test,data/raw/animal_kingdom/video/TVAUKXGD.mp4,6.42,24.0,154,640,360
+USTTFFGA,Wild Dog,100,Running,AGITATED,test,data/raw/animal_kingdom/video/USTTFFGA.mp4,7.83,24.0,188,640,360
+ZPTIZXDO,Wild Dog,100; 67; 133,Running; Jumping; Walking,AGITATED,test,data/raw/animal_kingdom/video/ZPTIZXDO.mp4,3.62,24.0,87,640,360
+AFLPRFGA,Wild Dog,100,Running,AGITATED,train,data/raw/animal_kingdom/video/AFLPRFGA.mp4,3.33,24.0,80,640,360
+AWJEUGCS,Dog,118; 3,Startled; Barking,AGITATED,train,data/raw/animal_kingdom/video/AWJEUGCS.mp4,9.83,24.0,236,640,360
+BLUYUTEK,African Painted Dog,133; 102; 67,Walking; Sensing; Jumping,AGITATED,train,data/raw/animal_kingdom/video/BLUYUTEK.mp4,1.12,24.0,27,640,360
+BUKSUFGA,Wild Dog,100,Running,AGITATED,train,data/raw/animal_kingdom/video/BUKSUFGA.mp4,4.83,24.0,116,640,360
+CKFVZXGD,Dog,2,Attending,CALM,train,data/raw/animal_kingdom/video/CKFVZXGD.mp4,1.71,24.0,41,640,360
+CUFGUGCS,Dog,118; 3; 68; 1,Startled; Barking; Keeping still; Attacking,AGITATED,train,data/raw/animal_kingdom/video/CUFGUGCS.mp4,10.21,24.0,245,640,360
+DUZPVFGA,Wild Dog,100,Running,AGITATED,train,data/raw/animal_kingdom/video/DUZPVFGA.mp4,0.62,24.0,15,640,360
+EDHHMXGD,Dog,100,Running,AGITATED,train,data/raw/animal_kingdom/video/EDHHMXGD.mp4,2.83,24.0,68,640,360
+EHXIFXGD,Dog,133; 2,Walking; Attending,CALM,train,data/raw/animal_kingdom/video/EHXIFXGD.mp4,2.0,24.0,48,640,360
+EOFBMBME,Dog,100,Running,AGITATED,train,data/raw/animal_kingdom/video/EOFBMBME.mp4,4.83,24.0,116,640,360
+EUKRNXGD,Dingo Dog,133,Walking,CALM,train,data/raw/animal_kingdom/video/EUKRNXGD.mp4,16.0,24.0,384,640,360
+GWRPTXDO,Wild Dog,102,Sensing,CALM,train,data/raw/animal_kingdom/video/GWRPTXDO.mp4,3.92,24.0,94,640,360
+HPRSIXDO,Wild Dog,100; 51,Running; Fleeing,AGITATED,train,data/raw/animal_kingdom/video/HPRSIXDO.mp4,2.12,24.0,51,640,360
+ICCBOFGA,Wild Dog,133,Walking,CALM,train,data/raw/animal_kingdom/video/ICCBOFGA.mp4,10.92,24.0,262,640,360
+IXJLIXGD,Dog,2; 139,Attending; Yawning,CALM,train,data/raw/animal_kingdom/video/IXJLIXGD.mp4,1.12,24.0,27,640,360
+JFPCUGCS,Dog,3,Barking,AGITATED,train,data/raw/animal_kingdom/video/JFPCUGCS.mp4,8.5,24.0,204,640,360
+JLQYOXGD,Dog,2,Attending,CALM,train,data/raw/animal_kingdom/video/JLQYOXGD.mp4,1.71,24.0,41,640,360
+KAFGDXGD,Dog,100,Running,AGITATED,train,data/raw/animal_kingdom/video/KAFGDXGD.mp4,2.92,24.0,70,640,360
+KUZYPXGD,Dog,102,Sensing,CALM,train,data/raw/animal_kingdom/video/KUZYPXGD.mp4,1.92,24.0,46,640,360
+LDTFJXGD,Dingo Dog,133,Walking,CALM,train,data/raw/animal_kingdom/video/LDTFJXGD.mp4,4.42,24.0,106,640,360
+LKEERFGA,Wild Dog,100,Running,AGITATED,train,data/raw/animal_kingdom/video/LKEERFGA.mp4,1.71,24.0,41,640,360
+MVDCSFGA,Wild Dog,133,Walking,CALM,train,data/raw/animal_kingdom/video/MVDCSFGA.mp4,4.0,24.0,96,640,360
+OOTCBXGD,Dog,100,Running,AGITATED,train,data/raw/animal_kingdom/video/OOTCBXGD.mp4,1.92,24.0,46,640,360
+OQQRVXGD,Dog,40,Eating,CALM,train,data/raw/animal_kingdom/video/OQQRVXGD.mp4,1.33,24.0,32,640,360
+ORBGIGCS,Dog,118; 68,Startled; Keeping still,AGITATED,train,data/raw/animal_kingdom/video/ORBGIGCS.mp4,1.71,24.0,41,640,360
+OTNOKXDO,Wild Dog,3,Barking,AGITATED,train,data/raw/animal_kingdom/video/OTNOKXDO.mp4,2.42,24.0,58,640,360
+PRXWIXGD,Dog,100,Running,AGITATED,train,data/raw/animal_kingdom/video/PRXWIXGD.mp4,2.12,24.0,51,640,360
+PWJTIFGA,Wild Dog,100,Running,AGITATED,train,data/raw/animal_kingdom/video/PWJTIFGA.mp4,1.0,24.0,24,640,360
+QFMMRXGD,Dog,100,Running,AGITATED,train,data/raw/animal_kingdom/video/QFMMRXGD.mp4,2.33,24.0,56,640,360
+QOZTQGCS,Dog,118,Startled,AGITATED,train,data/raw/animal_kingdom/video/QOZTQGCS.mp4,1.33,24.0,32,640,360
+RJALNXGD,Dog,100,Running,AGITATED,train,data/raw/animal_kingdom/video/RJALNXGD.mp4,4.0,24.0,96,640,360
+RTCFXXDO,Wild Dog,3,Barking,AGITATED,train,data/raw/animal_kingdom/video/RTCFXXDO.mp4,1.21,24.0,29,640,360
+SCAYVXGD,Dog,133; 2; 139,Walking; Attending; Yawning,CALM,train,data/raw/animal_kingdom/video/SCAYVXGD.mp4,3.12,24.0,75,640,360
+SFSRCXGD,Dog,100,Running,AGITATED,train,data/raw/animal_kingdom/video/SFSRCXGD.mp4,1.33,24.0,32,640,360
+SMLRJXGD,Dog,68,Keeping still,CALM,train,data/raw/animal_kingdom/video/SMLRJXGD.mp4,3.21,24.0,77,640,360
+TTOSQFGA,Wild Dog,100,Running,AGITATED,train,data/raw/animal_kingdom/video/TTOSQFGA.mp4,5.83,24.0,140,640,360
+UXNFAXGD,Dog,40,Eating,CALM,train,data/raw/animal_kingdom/video/UXNFAXGD.mp4,2.71,24.0,65,640,360
+VDDGCFGA,Wild Dog,100,Running,AGITATED,train,data/raw/animal_kingdom/video/VDDGCFGA.mp4,3.0,24.0,72,640,360
+VGALMFGA,Wild Dog,100,Running,AGITATED,train,data/raw/animal_kingdom/video/VGALMFGA.mp4,4.0,24.0,96,640,360
+WZUIAXGD,Dog,2,Attending,CALM,train,data/raw/animal_kingdom/video/WZUIAXGD.mp4,3.12,24.0,75,640,360
+XAKUOXGD,Dog,100,Running,AGITATED,train,data/raw/animal_kingdom/video/XAKUOXGD.mp4,0.21,24.0,5,640,360
+YEYILXGD,Dog,133,Walking,CALM,train,data/raw/animal_kingdom/video/YEYILXGD.mp4,1.42,24.0,34,640,360
+YKJFXGCS,Dog,3,Barking,AGITATED,train,data/raw/animal_kingdom/video/YKJFXGCS.mp4,1.62,24.0,39,640,360
+YLZBNFGA,Wild Dog,100,Running,AGITATED,train,data/raw/animal_kingdom/video/YLZBNFGA.mp4,0.83,24.0,20,640,360
+YSWGBGCS,Dog,68,Keeping still,CALM,train,data/raw/animal_kingdom/video/YSWGBGCS.mp4,0.42,24.0,10,640,360
+ZGNADXGD,Dog,100,Running,AGITATED,train,data/raw/animal_kingdom/video/ZGNADXGD.mp4,1.12,24.0,27,640,360
+ZPJLBFGA,Wild Dog,100,Running,AGITATED,train,data/raw/animal_kingdom/video/ZPJLBFGA.mp4,5.0,24.0,120,640,360

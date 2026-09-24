@@ -1,0 +1,102 @@
+# ==============================================================================
+# Zero Rabies-MMNet Git Ignore
+# ==============================================================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.dll
+*.so
+*.dylib
+*.bz2
+openh264*
+
+# C extensions
+*.so
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.project
+.settings/
+
+# OS-generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+[Dd]esktop.ini
+
+# Logs & temporary files
+*.log
+*.tmp
+*.bak
+
+# Datasets (Never commit raw or processed datasets to Git)
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# YOLO / ML Training Run Outputs (Ultralytics experiment directories)
+runs/
+
+# Ephemeral runtime outputs and uploaded files from web app / inference
+outputs/uploads/*
+!outputs/uploads/.gitkeep
+outputs/inference/*
+!outputs/inference/.gitkeep
+outputs/inference/annotated/*
+!outputs/inference/annotated/.gitkeep
+outputs/inference/tests/*
+!outputs/inference/tests/.gitkeep
+
+# Unused / redundant weights and root model artifacts
+weights/
+/yolo11n-pose.pt
+*last.pt
+*.pt.tmp
+
+# Video media files (prevent accidental commits of large video dumps)
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.webm

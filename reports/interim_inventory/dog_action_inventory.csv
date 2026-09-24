@@ -1,0 +1,22 @@
+action_id,action_name,total_clips,train_clips,test_clips
+100,Running,34,24,10
+133,Walking,15,9,6
+68,Keeping still,11,10,1
+1,Attacking,10,5,5
+102,Sensing,8,6,2
+67,Jumping,7,5,2
+2,Attending,6,6,0
+3,Barking,6,6,0
+14,Chasing,6,2,4
+26,Displaying defensive pose,4,0,4
+118,Startled,4,4,0
+123,Swimming,4,3,1
+51,Fleeing,3,1,2
+96,Retaliating,3,2,1
+8,Biting,2,0,2
+40,Eating,2,2,0
+46,Falling,2,0,2
+139,Yawning,2,2,0
+78,Moving,1,1,0
+91,Preying,1,1,0
+97,Retreating,1,1,0

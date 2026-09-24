@@ -1,0 +1,69 @@
+clip_id,split,cv_fold,behavior_label,behavior_name,action
+AFLPRFGA,train,4,1,AGITATED,Running
+AWJEUGCS,train,2,1,AGITATED,Startled; Barking
+BLUYUTEK,train,3,1,AGITATED,Walking; Sensing; Jumping
+BUKSUFGA,train,2,1,AGITATED,Running
+CKFVZXGD,train,4,0,CALM,Attending
+CUFGUGCS,train,1,1,AGITATED,Startled; Barking; Keeping still; Attacking
+DUZPVFGA,train,1,1,AGITATED,Running
+EDHHMXGD,train,4,1,AGITATED,Running
+EHXIFXGD,train,0,0,CALM,Walking; Attending
+EOFBMBME,train,4,1,AGITATED,Running
+EUKRNXGD,train,1,0,CALM,Walking
+GWRPTXDO,train,0,0,CALM,Sensing
+HPRSIXDO,train,2,1,AGITATED,Running; Fleeing
+ICCBOFGA,train,2,0,CALM,Walking
+IXJLIXGD,train,1,0,CALM,Attending; Yawning
+JFPCUGCS,train,0,1,AGITATED,Barking
+JLQYOXGD,train,1,0,CALM,Attending
+KAFGDXGD,train,0,1,AGITATED,Running
+KUZYPXGD,train,3,0,CALM,Sensing
+LDTFJXGD,train,2,0,CALM,Walking
+LKEERFGA,train,2,1,AGITATED,Running
+MVDCSFGA,train,0,0,CALM,Walking
+OOTCBXGD,train,0,1,AGITATED,Running
+OQQRVXGD,train,1,0,CALM,Eating
+ORBGIGCS,train,2,1,AGITATED,Startled; Keeping still
+OTNOKXDO,train,1,1,AGITATED,Barking
+PRXWIXGD,train,3,1,AGITATED,Running
+PWJTIFGA,train,0,1,AGITATED,Running
+QFMMRXGD,train,0,1,AGITATED,Running
+QOZTQGCS,train,4,1,AGITATED,Startled
+RJALNXGD,train,0,1,AGITATED,Running
+RTCFXXDO,train,3,1,AGITATED,Barking
+SCAYVXGD,train,3,0,CALM,Walking; Attending; Yawning
+SFSRCXGD,train,4,1,AGITATED,Running
+SMLRJXGD,train,0,0,CALM,Keeping still
+TTOSQFGA,train,3,1,AGITATED,Running
+UXNFAXGD,train,4,0,CALM,Eating
+VDDGCFGA,train,4,1,AGITATED,Running
+VGALMFGA,train,3,1,AGITATED,Running
+WZUIAXGD,train,3,0,CALM,Attending
+XAKUOXGD,train,1,1,AGITATED,Running
+YEYILXGD,train,4,0,CALM,Walking
+YKJFXGCS,train,1,1,AGITATED,Barking
+YLZBNFGA,train,2,1,AGITATED,Running
+YSWGBGCS,train,2,0,CALM,Keeping still
+ZGNADXGD,train,3,1,AGITATED,Running
+ZPJLBFGA,train,1,1,AGITATED,Running
+AVFJUXDO,test,-1,1,AGITATED,Fleeing
+CSHALXDO,test,-1,1,AGITATED,Attacking
+DCVGZXDO,test,-1,1,AGITATED,Attacking
+DWOLCXDO,test,-1,1,AGITATED,Attacking; Chasing
+EBOJNFGA,test,-1,1,AGITATED,Running
+EPQDGFGA,test,-1,1,AGITATED,Running
+ETOKQXGD,test,-1,1,AGITATED,Chasing
+EVQRFFGA,test,-1,0,CALM,Walking
+GICIEXDO,test,-1,1,AGITATED,Running
+GNCBFXGD,test,-1,1,AGITATED,Biting; Attacking
+IKAMHFGA,test,-1,1,AGITATED,Running
+KURRZFGA,test,-1,1,AGITATED,Running
+PEPZMXDO,test,-1,1,AGITATED,Jumping
+PPOLHFGA,test,-1,1,AGITATED,Running
+RAUURFGA,test,-1,1,AGITATED,Running
+SKCIHXDO,test,-1,1,AGITATED,Chasing
+SOXNEFGA,test,-1,0,CALM,Walking
+TNANEFGA,test,-1,0,CALM,Walking
+TVAUKXGD,test,-1,1,AGITATED,Biting; Attacking; Chasing
+USTTFFGA,test,-1,1,AGITATED,Running
+ZPTIZXDO,test,-1,1,AGITATED,Running; Jumping; Walking

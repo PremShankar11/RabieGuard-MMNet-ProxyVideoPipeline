@@ -1,0 +1,85 @@
+species,action_name,total_clips,train_clips,test_clips
+African Painted Dog,Jumping,1,1,0
+African Painted Dog,Sensing,1,1,0
+African Painted Dog,Walking,1,1,0
+Colugo,Keeping still,5,5,0
+Colugo,Attending,2,2,0
+Colugo,Grooming,2,2,0
+Colugo,Hanging,2,1,1
+Colugo,Climbing,1,1,0
+Colugo,Gliding,1,1,0
+Colugo,Hugging,1,0,1
+Colugo,Sensing,1,1,0
+Coyote,Walking,11,11,0
+Coyote,Jumping,8,8,0
+Coyote,Sensing,6,6,0
+Coyote,Running,2,2,0
+Coyote,Eating,1,1,0
+Desert Fox,Running,4,2,2
+Desert Fox,Walking,4,2,2
+Desert Fox,Exploring,2,1,1
+Desert Fox,Keeping still,2,0,2
+Desert Fox,Licking,1,0,1
+Dholes,Walking,1,1,0
+Dingo Dog,Walking,2,2,0
+Dog,Running,10,10,0
+Dog,Attending,6,6,0
+Dog,Barking,4,4,0
+Dog,Keeping still,4,4,0
+Dog,Startled,4,4,0
+Dog,Attacking,3,1,2
+Dog,Walking,3,3,0
+Dog,Biting,2,0,2
+Dog,Chasing,2,0,2
+Dog,Eating,2,2,0
+Dog,Yawning,2,2,0
+Dog,Sensing,1,1,0
+Dog Faced Water Snake,Keeping still,7,6,1
+Dog Faced Water Snake,Moving,1,1,0
+Fox,Walking,27,23,4
+Fox,Keeping still,16,11,5
+Fox,Sensing,16,12,4
+Fox,Eating,15,14,1
+Fox,Jumping,12,7,5
+Fox,Shaking head,8,8,0
+Fox,Sitting,5,5,0
+Fox,Biting,4,4,0
+Fox,Attending,2,1,1
+Fox,Digging,2,1,1
+Fox,Exploring,2,2,0
+Jackal,Attending,5,5,0
+Jackal,Eating,4,4,0
+Jackal,Keeping still,4,4,0
+Jackal,Barking,3,3,0
+Jackal,Exploring,1,0,1
+Malayan Flying Fox,Eating,2,2,0
+Wild Dog,Running,20,11,9
+Wild Dog,Walking,6,2,4
+Wild Dog,Attacking,4,1,3
+Wild Dog,Barking,2,2,0
+Wild Dog,Chasing,2,0,2
+Wild Dog,Fleeing,2,1,1
+Wild Dog,Jumping,2,0,2
+Wild Dog,Preying,1,1,0
+Wild Dog,Sensing,1,1,0
+Wolf,Walking,50,30,20
+Wolf,Sensing,23,14,9
+Wolf,Running,22,14,8
+Wolf,Exploring,20,10,10
+Wolf,Chasing,15,14,1
+Wolf,Carrying in mouth,8,6,2
+Wolf,Fleeing,8,8,0
+Wolf,Keeping still,7,7,0
+Wolf,Attending,6,6,0
+Wolf,Eating,6,3,3
+Wolf,Turning around,5,2,3
+Wolf,Biting,4,2,2
+Wolf,Jumping,4,2,2
+Wolf,Entering its nest,2,2,0
+Wolf,Fighting,2,2,0
+Wolf,Retaliating,2,2,0
+Wolf,Sitting,2,1,1
+Wolf,Attacking,1,1,0
+Wolf,Manipulating object,1,0,1
+Wolf,Tail swishing,1,1,0
+Wolf,Urinating,1,1,0

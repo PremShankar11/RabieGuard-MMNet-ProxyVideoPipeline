@@ -1,0 +1,90 @@
+data:
+  manifest_csv: "outputs/animal_kingdom_pose_manifest.csv"
+  pose_cache_dir: "data/processed/animal_kingdom/pose_cache"
+  video_dir: "data/raw/animal_kingdom/video"
+  cv_splits_csv: "outputs/behavior_v2/v2_cv_splits.csv"
+  v2_cache_dir: "data/processed/animal_kingdom/v2_cache"
+  sampling_rate: 8.0
+  n_splits: 5
+  seed: 42
+
+experiments:
+  exp_a_v1_reproduction:
+    model_type: "mamba"
+    seq_length: 16
+    d_model: 64
+    num_layers: 2
+    reliability_mode: "pooling"
+    tracking_mode: "highest_conf"
+
+  exp_b1_reliability_input:
+    model_type: "mamba"
+    seq_length: 16
+    d_model: 64
+    num_layers: 2
+    reliability_mode: "input"
+    tracking_mode: "highest_conf"
+
+  exp_b2_reliability_both:
+    model_type: "mamba"
+    seq_length: 16
+    d_model: 64
+    num_layers: 2
+    reliability_mode: "both"
+    tracking_mode: "highest_conf"
+
+  exp_c1_seq24:
+    model_type: "mamba"
+    seq_length: 24
+    d_model: 64
+    num_layers: 2
+    reliability_mode: "both"
+    tracking_mode: "highest_conf"
+
+  exp_c2_seq32:
+    model_type: "mamba"
+    seq_length: 32
+    d_model: 64
+    num_layers: 2
+    reliability_mode: "both"
+    tracking_mode: "highest_conf"
+
+  exp_d_temporal_tracking:
+    model_type: "mamba"
+    seq_length: 16
+    d_model: 64
+    num_layers: 2
+    reliability_mode: "both"
+    tracking_mode: "temporal_consistent"
+
+  exp_e1_gru:
+    model_type: "gru"
+    seq_length: 16
+    hidden_dim: 64
+    num_layers: 2
+    reliability_mode: "both"
+    tracking_mode: "highest_conf"
+
+  exp_e2_lstm:
+    model_type: "lstm"
+    seq_length: 16
+    hidden_dim: 56
+    num_layers: 2
+    reliability_mode: "both"
+    tracking_mode: "highest_conf"
+
+  exp_f_baseline_mlp:
+    model_type: "baseline_mlp"
+    seq_length: 16
+    hidden_dim: 32
+    reliability_mode: "both"
+    tracking_mode: "highest_conf"
+
+training:
+  batch_size: 8
+  lr: 0.001
+  weight_decay: 0.0001
+  epochs: 35
+  patience: 8
+  amp: true
+  seed: 42

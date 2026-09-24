@@ -1,0 +1,472 @@
+species,action_id,action_name,clip_id,split
+African Painted Dog,67,Jumping,BLUYUTEK,train
+African Painted Dog,102,Sensing,BLUYUTEK,train
+African Painted Dog,133,Walking,BLUYUTEK,train
+Colugo,2,Attending,IZFBNBQT,train
+Colugo,2,Attending,VAZMATEK,train
+Colugo,16,Climbing,TTCOCTEK,train
+Colugo,57,Gliding,CQBELBQT,train
+Colugo,58,Grooming,RMLDBBQT,train
+Colugo,58,Grooming,SPOAHFFP,train
+Colugo,59,Hanging,ASNGHBQT,test
+Colugo,59,Hanging,SPOAHFFP,train
+Colugo,65,Hugging,ASNGHBQT,test
+Colugo,68,Keeping still,FECPVTEK,train
+Colugo,68,Keeping still,JZBQJTEK,train
+Colugo,68,Keeping still,PAOHHBQT,train
+Colugo,68,Keeping still,PPFMWTEK,train
+Colugo,68,Keeping still,XYVBBBQT,train
+Colugo,102,Sensing,QKHRSBQT,train
+Coyote,40,Eating,QLZLPVMP,train
+Coyote,67,Jumping,BIUQBRAC,train
+Coyote,67,Jumping,FDOHSRAC,train
+Coyote,67,Jumping,JDJMHRAC,train
+Coyote,67,Jumping,JOABNRAC,train
+Coyote,67,Jumping,LWSQVRAC,train
+Coyote,67,Jumping,PODPPRAC,train
+Coyote,67,Jumping,TBOWDRAC,train
+Coyote,67,Jumping,VUJUSRAC,train
+Coyote,100,Running,DOWWVRAC,train
+Coyote,100,Running,TBOWDRAC,train
+Coyote,102,Sensing,FDOHSRAC,train
+Coyote,102,Sensing,HHDLXDPR,train
+Coyote,102,Sensing,JOABNRAC,train
+Coyote,102,Sensing,PFNOTDPR,train
+Coyote,102,Sensing,PIXKTRAC,train
+Coyote,102,Sensing,SBJJCRAC,train
+Coyote,133,Walking,BIUQBRAC,train
+Coyote,133,Walking,FDOHSRAC,train
+Coyote,133,Walking,JDJMHRAC,train
+Coyote,133,Walking,JOABNRAC,train
+Coyote,133,Walking,LWSQVRAC,train
+Coyote,133,Walking,NJGOYRAC,train
+Coyote,133,Walking,OJJFUVMP,train
+Coyote,133,Walking,PFNOTDPR,train
+Coyote,133,Walking,PIXKTRAC,train
+Coyote,133,Walking,RCWNYRAC,train
+Coyote,133,Walking,TDRFKDPR,train
+Desert Fox,45,Exploring,EGJVKDSN,train
+Desert Fox,45,Exploring,TMNGGDSN,test
+Desert Fox,68,Keeping still,OQFUJDSN,test
+Desert Fox,68,Keeping still,WDQOPDSN,test
+Desert Fox,73,Licking,MUEJQDSN,test
+Desert Fox,100,Running,BUISCDSN,train
+Desert Fox,100,Running,JBJDFDSN,test
+Desert Fox,100,Running,XTRXIDSN,test
+Desert Fox,100,Running,ZORHUDSN,train
+Desert Fox,133,Walking,NTWBIDSN,train
+Desert Fox,133,Walking,OOBVGDSN,train
+Desert Fox,133,Walking,USRNZDSN,test
+Desert Fox,133,Walking,WDQOPDSN,test
+Dholes,133,Walking,GKZXNIMN,train
+Dingo Dog,133,Walking,EUKRNXGD,train
+Dingo Dog,133,Walking,LDTFJXGD,train
+Dog,1,Attacking,CUFGUGCS,train
+Dog,1,Attacking,GNCBFXGD,test
+Dog,1,Attacking,TVAUKXGD,test
+Dog,2,Attending,CKFVZXGD,train
+Dog,2,Attending,EHXIFXGD,train
+Dog,2,Attending,IXJLIXGD,train
+Dog,2,Attending,JLQYOXGD,train
+Dog,2,Attending,SCAYVXGD,train
+Dog,2,Attending,WZUIAXGD,train
+Dog,3,Barking,AWJEUGCS,train
+Dog,3,Barking,CUFGUGCS,train
+Dog,3,Barking,JFPCUGCS,train
+Dog,3,Barking,YKJFXGCS,train
+Dog,8,Biting,GNCBFXGD,test
+Dog,8,Biting,TVAUKXGD,test
+Dog,14,Chasing,ETOKQXGD,test
+Dog,14,Chasing,TVAUKXGD,test
+Dog,40,Eating,OQQRVXGD,train
+Dog,40,Eating,UXNFAXGD,train
+Dog,68,Keeping still,CUFGUGCS,train
+Dog,68,Keeping still,ORBGIGCS,train
+Dog,68,Keeping still,SMLRJXGD,train
+Dog,68,Keeping still,YSWGBGCS,train
+Dog,100,Running,EDHHMXGD,train
+Dog,100,Running,EOFBMBME,train
+Dog,100,Running,KAFGDXGD,train
+Dog,100,Running,OOTCBXGD,train
+Dog,100,Running,PRXWIXGD,train
+Dog,100,Running,QFMMRXGD,train
+Dog,100,Running,RJALNXGD,train
+Dog,100,Running,SFSRCXGD,train
+Dog,100,Running,XAKUOXGD,train
+Dog,100,Running,ZGNADXGD,train
+Dog,102,Sensing,KUZYPXGD,train
+Dog,118,Startled,AWJEUGCS,train
+Dog,118,Startled,CUFGUGCS,train
+Dog,118,Startled,ORBGIGCS,train
+Dog,118,Startled,QOZTQGCS,train
+Dog,133,Walking,EHXIFXGD,train
+Dog,133,Walking,SCAYVXGD,train
+Dog,133,Walking,YEYILXGD,train
+Dog,139,Yawning,IXJLIXGD,train
+Dog,139,Yawning,SCAYVXGD,train
+Dog Faced Water Snake,68,Keeping still,HLRQUFFP,train
+Dog Faced Water Snake,68,Keeping still,LNKQTFFP,train
+Dog Faced Water Snake,68,Keeping still,MZXFEFFP,train
+Dog Faced Water Snake,68,Keeping still,PONMXFFP,train
+Dog Faced Water Snake,68,Keeping still,PYTVUFFP,train
+Dog Faced Water Snake,68,Keeping still,TXAXTFFP,train
+Dog Faced Water Snake,68,Keeping still,UKUQKFFP,test
+Dog Faced Water Snake,78,Moving,XADSVFFP,train
+Fox,2,Attending,FJLSEEBY,test
+Fox,2,Attending,GIVJGXGD,train
+Fox,8,Biting,IOVYTEBY,train
+Fox,8,Biting,QDEIHEBY,train
+Fox,8,Biting,SDHEIEBY,train
+Fox,8,Biting,XFXRNEBY,train
+Fox,25,Digging,PLHGJEBY,test
+Fox,25,Digging,ZFWMGEBY,train
+Fox,40,Eating,CGYOREBY,train
+Fox,40,Eating,CMNHHDAL,train
+Fox,40,Eating,ENJUYDAL,train
+Fox,40,Eating,JBRQKDAL,train
+Fox,40,Eating,KACVEDAL,train
+Fox,40,Eating,OFIFIEBY,train
+Fox,40,Eating,QDEIHEBY,train
+Fox,40,Eating,RYZABEBY,test
+Fox,40,Eating,SDFKMEBY,train
+Fox,40,Eating,SDHEIEBY,train
+Fox,40,Eating,TZGKUDAL,train
+Fox,40,Eating,UVFVODAL,train
+Fox,40,Eating,WOVIDEBY,train
+Fox,40,Eating,XBPHXEBY,train
+Fox,40,Eating,XFXRNEBY,train
+Fox,45,Exploring,JCKOVEBY,train
+Fox,45,Exploring,JQNJBEBY,train
+Fox,67,Jumping,CDUOEEBY,test
+Fox,67,Jumping,ETTESEBY,test
+Fox,67,Jumping,JCKOVEBY,train
+Fox,67,Jumping,JVSXIEBY,train
+Fox,67,Jumping,LNKQREBY,train
+Fox,67,Jumping,LXWUWEBY,train
+Fox,67,Jumping,OLAMJEBY,train
+Fox,67,Jumping,QARHHEBY,train
+Fox,67,Jumping,RDKFYEBY,train
+Fox,67,Jumping,TEJCGEBY,test
+Fox,67,Jumping,TQDZOEBY,test
+Fox,67,Jumping,ZGPRSEBY,test
+Fox,68,Keeping still,AIFSREBY,train
+Fox,68,Keeping still,CMNHHDAL,train
+Fox,68,Keeping still,ENJUYDAL,train
+Fox,68,Keeping still,HANCMEBY,test
+Fox,68,Keeping still,IUZEQEBY,train
+Fox,68,Keeping still,JMBYQEBY,train
+Fox,68,Keeping still,JTVLCEBY,test
+Fox,68,Keeping still,KACVEDAL,train
+Fox,68,Keeping still,KIZGQEBY,train
+Fox,68,Keeping still,KYTBXEBY,train
+Fox,68,Keeping still,TQDZOEBY,test
+Fox,68,Keeping still,UOUAKEBY,train
+Fox,68,Keeping still,UVFVODAL,train
+Fox,68,Keeping still,WKPGVEBY,test
+Fox,68,Keeping still,WOPPQEBY,train
+Fox,68,Keeping still,XXQDLEBY,test
+Fox,102,Sensing,BFBBMEBY,test
+Fox,102,Sensing,BXDRVEBY,test
+Fox,102,Sensing,CAZTCEBY,train
+Fox,102,Sensing,CJOCVEBY,train
+Fox,102,Sensing,CPOBLXGD,train
+Fox,102,Sensing,DDDSHDAL,train
+Fox,102,Sensing,ENJUYDAL,train
+Fox,102,Sensing,HCOWMEBY,train
+Fox,102,Sensing,LQKLZEBY,test
+Fox,102,Sensing,MTVJCEBY,test
+Fox,102,Sensing,QFSQWEBY,train
+Fox,102,Sensing,SMANYVMP,train
+Fox,102,Sensing,TMLYPEBY,train
+Fox,102,Sensing,UTSETVMP,train
+Fox,102,Sensing,WRIULVMP,train
+Fox,102,Sensing,ZOXWLEBY,train
+Fox,104,Shaking head,HIESSEBY,train
+Fox,104,Shaking head,OFIFIEBY,train
+Fox,104,Shaking head,QDEIHEBY,train
+Fox,104,Shaking head,QFSQWEBY,train
+Fox,104,Shaking head,RGEYREBY,train
+Fox,104,Shaking head,WOVIDEBY,train
+Fox,104,Shaking head,XBPHXEBY,train
+Fox,104,Shaking head,XFXRNEBY,train
+Fox,108,Sitting,AIFSREBY,train
+Fox,108,Sitting,FGHIREBY,train
+Fox,108,Sitting,FNNVSVMP,train
+Fox,108,Sitting,KUDLUXGD,train
+Fox,108,Sitting,WRIULVMP,train
+Fox,133,Walking,ADSTNDAL,train
+Fox,133,Walking,CALITDAL,train
+Fox,133,Walking,CMNHHDAL,train
+Fox,133,Walking,DSUIJEBY,train
+Fox,133,Walking,EVUWKEBY,test
+Fox,133,Walking,FJABQEBY,train
+Fox,133,Walking,FNNVSVMP,train
+Fox,133,Walking,GLGKREBY,test
+Fox,133,Walking,IAKDVEBY,train
+Fox,133,Walking,IOVYTEBY,train
+Fox,133,Walking,JMBYQEBY,train
+Fox,133,Walking,JTVLCEBY,test
+Fox,133,Walking,KACVEDAL,train
+Fox,133,Walking,LAJALDAL,train
+Fox,133,Walking,PXMMUEBY,train
+Fox,133,Walking,QDEIHEBY,train
+Fox,133,Walking,QWSWMDAL,train
+Fox,133,Walking,RAFWEEBY,train
+Fox,133,Walking,SDHEIEBY,train
+Fox,133,Walking,SMANYVMP,train
+Fox,133,Walking,UDYINDAL,train
+Fox,133,Walking,UINTNEBY,train
+Fox,133,Walking,UVFVODAL,train
+Fox,133,Walking,UVYRNEBY,test
+Fox,133,Walking,WRIULVMP,train
+Fox,133,Walking,XFIHQEBY,train
+Fox,133,Walking,XFXRNEBY,train
+Jackal,2,Attending,BZFOLEZZ,train
+Jackal,2,Attending,DNXYSEZZ,train
+Jackal,2,Attending,MHMKQEZZ,train
+Jackal,2,Attending,MUMHBEZZ,train
+Jackal,2,Attending,TLYNPEZZ,train
+Jackal,3,Barking,MHMKQEZZ,train
+Jackal,3,Barking,MMNQAEZZ,train
+Jackal,3,Barking,MUMHBEZZ,train
+Jackal,40,Eating,CCMUSEZZ,train
+Jackal,40,Eating,MHMKQEZZ,train
+Jackal,40,Eating,MMNQAEZZ,train
+Jackal,40,Eating,MUMHBEZZ,train
+Jackal,45,Exploring,RZDUWEZZ,test
+Jackal,68,Keeping still,DNXYSEZZ,train
+Jackal,68,Keeping still,MHMKQEZZ,train
+Jackal,68,Keeping still,MUMHBEZZ,train
+Jackal,68,Keeping still,TLYNPEZZ,train
+Malayan Flying Fox,40,Eating,NTBQUTEK,train
+Malayan Flying Fox,40,Eating,PGIYTTEK,train
+Wild Dog,1,Attacking,CSHALXDO,test
+Wild Dog,1,Attacking,DCVGZXDO,test
+Wild Dog,1,Attacking,DWOLCXDO,test
+Wild Dog,1,Attacking,VTPRNXDO,train
+Wild Dog,3,Barking,OTNOKXDO,train
+Wild Dog,3,Barking,RTCFXXDO,train
+Wild Dog,14,Chasing,DWOLCXDO,test
+Wild Dog,14,Chasing,SKCIHXDO,test
+Wild Dog,51,Fleeing,AVFJUXDO,test
+Wild Dog,51,Fleeing,HPRSIXDO,train
+Wild Dog,67,Jumping,PEPZMXDO,test
+Wild Dog,67,Jumping,ZPTIZXDO,test
+Wild Dog,91,Preying,VTPRNXDO,train
+Wild Dog,100,Running,AFLPRFGA,train
+Wild Dog,100,Running,BUKSUFGA,train
+Wild Dog,100,Running,DUZPVFGA,train
+Wild Dog,100,Running,EBOJNFGA,test
+Wild Dog,100,Running,EPQDGFGA,test
+Wild Dog,100,Running,GICIEXDO,test
+Wild Dog,100,Running,HPRSIXDO,train
+Wild Dog,100,Running,IKAMHFGA,test
+Wild Dog,100,Running,KURRZFGA,test
+Wild Dog,100,Running,LKEERFGA,train
+Wild Dog,100,Running,PPOLHFGA,test
+Wild Dog,100,Running,PWJTIFGA,train
+Wild Dog,100,Running,RAUURFGA,test
+Wild Dog,100,Running,TTOSQFGA,train
+Wild Dog,100,Running,USTTFFGA,test
+Wild Dog,100,Running,VDDGCFGA,train
+Wild Dog,100,Running,VGALMFGA,train
+Wild Dog,100,Running,YLZBNFGA,train
+Wild Dog,100,Running,ZPJLBFGA,train
+Wild Dog,100,Running,ZPTIZXDO,test
+Wild Dog,102,Sensing,GWRPTXDO,train
+Wild Dog,133,Walking,EVQRFFGA,test
+Wild Dog,133,Walking,ICCBOFGA,train
+Wild Dog,133,Walking,MVDCSFGA,train
+Wild Dog,133,Walking,SOXNEFGA,test
+Wild Dog,133,Walking,TNANEFGA,test
+Wild Dog,133,Walking,ZPTIZXDO,test
+Wolf,1,Attacking,UQYWCRSU,train
+Wolf,2,Attending,AKYIXRSU,train
+Wolf,2,Attending,BWAOGRSU,train
+Wolf,2,Attending,DHLCLRSU,train
+Wolf,2,Attending,DXNNORSU,train
+Wolf,2,Attending,IJTCHRSU,train
+Wolf,2,Attending,PDJTSRSU,train
+Wolf,8,Biting,CUWYXCNX,train
+Wolf,8,Biting,FKTOVCNX,test
+Wolf,8,Biting,GKUHTDSN,train
+Wolf,8,Biting,RIBYTDSN,test
+Wolf,13,Carrying in mouth,APPQWCNX,train
+Wolf,13,Carrying in mouth,CJTABRSU,train
+Wolf,13,Carrying in mouth,ECCJQCNX,train
+Wolf,13,Carrying in mouth,GXZYXCNX,test
+Wolf,13,Carrying in mouth,NMRJQRSU,train
+Wolf,13,Carrying in mouth,NTYBLRSU,train
+Wolf,13,Carrying in mouth,RKMYMRSU,train
+Wolf,13,Carrying in mouth,VEOOFCNX,test
+Wolf,14,Chasing,BLUIEDSN,train
+Wolf,14,Chasing,DHOIVDSN,train
+Wolf,14,Chasing,FWPNCDSN,train
+Wolf,14,Chasing,IUJRJRSU,train
+Wolf,14,Chasing,JOTYIRSU,train
+Wolf,14,Chasing,LGOBKRSU,train
+Wolf,14,Chasing,NJNBFRSU,train
+Wolf,14,Chasing,ONNMKRSU,train
+Wolf,14,Chasing,PRJHLDSN,test
+Wolf,14,Chasing,QNTULRSU,train
+Wolf,14,Chasing,SBPPARSU,train
+Wolf,14,Chasing,WYVCEDSN,train
+Wolf,14,Chasing,XGZSSRSU,train
+Wolf,14,Chasing,XTNNWDSN,train
+Wolf,14,Chasing,ZDQCJDSN,train
+Wolf,40,Eating,BTCQJCNX,train
+Wolf,40,Eating,GNMCNCNX,train
+Wolf,40,Eating,GXZYXCNX,test
+Wolf,40,Eating,MMSNUCNX,test
+Wolf,40,Eating,NJBBBVMP,train
+Wolf,40,Eating,VFWIFCNX,test
+Wolf,41,Entering its nest,MMFCPRSU,train
+Wolf,41,Entering its nest,WZYVNRSU,train
+Wolf,45,Exploring,AHSAPCNX,train
+Wolf,45,Exploring,BLMFGFGA,test
+Wolf,45,Exploring,CUWYXCNX,train
+Wolf,45,Exploring,EGVFHCNX,train
+Wolf,45,Exploring,FUNCGCNX,test
+Wolf,45,Exploring,HGHBGCNX,test
+Wolf,45,Exploring,HGLXJCNX,train
+Wolf,45,Exploring,IBPHICNX,train
+Wolf,45,Exploring,KYABVCNX,test
+Wolf,45,Exploring,LDNDOCNX,test
+Wolf,45,Exploring,LFMVECNX,train
+Wolf,45,Exploring,MGBSOFGA,train
+Wolf,45,Exploring,RKCNXCNX,test
+Wolf,45,Exploring,SOTFAFGA,train
+Wolf,45,Exploring,SVNPCCNX,train
+Wolf,45,Exploring,UOYWOCNX,test
+Wolf,45,Exploring,WALEWCNX,test
+Wolf,45,Exploring,XFIZXCNX,test
+Wolf,45,Exploring,XSUBUCNX,train
+Wolf,45,Exploring,XVKTPCNX,test
+Wolf,47,Fighting,JONIBVMP,train
+Wolf,47,Fighting,NJNBFRSU,train
+Wolf,51,Fleeing,IUJRJRSU,train
+Wolf,51,Fleeing,JOTYIRSU,train
+Wolf,51,Fleeing,LGOBKRSU,train
+Wolf,51,Fleeing,NJNBFRSU,train
+Wolf,51,Fleeing,ONNMKRSU,train
+Wolf,51,Fleeing,QNTULRSU,train
+Wolf,51,Fleeing,SBPPARSU,train
+Wolf,51,Fleeing,XGZSSRSU,train
+Wolf,67,Jumping,CWUSGFGA,test
+Wolf,67,Jumping,CZVTXFGA,train
+Wolf,67,Jumping,LIXLSFGA,test
+Wolf,67,Jumping,ZABYMFGA,train
+Wolf,68,Keeping still,BWAOGRSU,train
+Wolf,68,Keeping still,DXNNORSU,train
+Wolf,68,Keeping still,IJTCHRSU,train
+Wolf,68,Keeping still,LWCFLRSU,train
+Wolf,68,Keeping still,PDJTSRSU,train
+Wolf,68,Keeping still,QFXYXRSU,train
+Wolf,68,Keeping still,VEMEECNX,train
+Wolf,76,Manipulating object,QMLUFCNX,test
+Wolf,96,Retaliating,NJNBFRSU,train
+Wolf,96,Retaliating,UQYWCRSU,train
+Wolf,100,Running,CONNYFGA,train
+Wolf,100,Running,CWKHXFGA,test
+Wolf,100,Running,CZVTXFGA,train
+Wolf,100,Running,ECQRGFGA,test
+Wolf,100,Running,GRUCDFGA,train
+Wolf,100,Running,HTVUFRSU,train
+Wolf,100,Running,HWRGEFGA,test
+Wolf,100,Running,IDCHAFGA,test
+Wolf,100,Running,IUGCUFGA,train
+Wolf,100,Running,JBODVDSN,test
+Wolf,100,Running,KEMLQDSN,train
+Wolf,100,Running,LIXLSFGA,test
+Wolf,100,Running,NQFDEFGA,train
+Wolf,100,Running,SAZKLDSN,train
+Wolf,100,Running,TABWSFGA,test
+Wolf,100,Running,TDGPBDSN,test
+Wolf,100,Running,TRBAWFGA,train
+Wolf,100,Running,UOHILFGA,train
+Wolf,100,Running,VNXHXFGA,train
+Wolf,100,Running,YBSATFGA,train
+Wolf,100,Running,ZMKWRDSN,train
+Wolf,100,Running,ZOTKPRSU,train
+Wolf,102,Sensing,AGILRCNX,test
+Wolf,102,Sensing,AKYIXRSU,train
+Wolf,102,Sensing,AOZRGCNX,train
+Wolf,102,Sensing,DHLCLRSU,train
+Wolf,102,Sensing,GNBCOCNX,train
+Wolf,102,Sensing,IMRAXCNX,train
+Wolf,102,Sensing,JOTYIRSU,train
+Wolf,102,Sensing,KIANSCNX,train
+Wolf,102,Sensing,KIWAPCNX,test
+Wolf,102,Sensing,LGYJLCNX,train
+Wolf,102,Sensing,LHCTQCNX,test
+Wolf,102,Sensing,ONNMKRSU,train
+Wolf,102,Sensing,PBXOORSU,train
+Wolf,102,Sensing,QNTULRSU,train
+Wolf,102,Sensing,RGVOECNX,test
+Wolf,102,Sensing,SBPPARSU,train
+Wolf,102,Sensing,TDRLECNX,train
+Wolf,102,Sensing,TUBJVCNX,test
+Wolf,102,Sensing,UHTDGCNX,train
+Wolf,102,Sensing,WSXYDFGA,test
+Wolf,102,Sensing,XERHCDSN,test
+Wolf,102,Sensing,XYNMICNX,test
+Wolf,102,Sensing,ZMWNVCNX,test
+Wolf,108,Sitting,FGPGOCNX,test
+Wolf,108,Sitting,IMRAXCNX,train
+Wolf,126,Tail swishing,BHXSRCNX,train
+Wolf,128,Turning around,BLMFGFGA,test
+Wolf,128,Turning around,GPYEFFGA,train
+Wolf,128,Turning around,OKTSJFGA,test
+Wolf,128,Turning around,RGVOECNX,test
+Wolf,128,Turning around,SOTFAFGA,train
+Wolf,132,Urinating,GPQEHCNX,train
+Wolf,133,Walking,AOZRGCNX,train
+Wolf,133,Walking,AZNCEFGA,train
+Wolf,133,Walking,BHXSRCNX,train
+Wolf,133,Walking,BLMFGFGA,test
+Wolf,133,Walking,BWLFAFGA,train
+Wolf,133,Walking,CABQECNX,train
+Wolf,133,Walking,CREJWFGA,train
+Wolf,133,Walking,CZVTXFGA,train
+Wolf,133,Walking,EDXUUCNX,train
+Wolf,133,Walking,ENCQCCNX,test
+Wolf,133,Walking,FGPGOCNX,test
+Wolf,133,Walking,FNPLQCNX,train
+Wolf,133,Walking,IFUBGCNX,test
+Wolf,133,Walking,IMRAXCNX,train
+Wolf,133,Walking,IVNWICNX,test
+Wolf,133,Walking,JKYVJDSN,test
+Wolf,133,Walking,KRJTGRSU,train
+Wolf,133,Walking,KYABVCNX,test
+Wolf,133,Walking,LFMVECNX,train
+Wolf,133,Walking,MLUJSCNX,train
+Wolf,133,Walking,MMSNUCNX,test
+Wolf,133,Walking,NGRURCNX,test
+Wolf,133,Walking,NLFQXCNX,train
+Wolf,133,Walking,NTYBLRSU,train
+Wolf,133,Walking,OKPCSFGA,train
+Wolf,133,Walking,OKTSJFGA,test
+Wolf,133,Walking,PRGKPCNX,test
+Wolf,133,Walking,RKMYMRSU,train
+Wolf,133,Walking,RNDTTFGA,train
+Wolf,133,Walking,TDRLECNX,train
+Wolf,133,Walking,TEKPGCNX,train
+Wolf,133,Walking,THKNNFGA,test
+Wolf,133,Walking,TWLBLCNX,train
+Wolf,133,Walking,UVFRLCNX,test
+Wolf,133,Walking,UVJBWCNX,test
+Wolf,133,Walking,VHSFPCNX,test
+Wolf,133,Walking,WAUTGCNX,train
+Wolf,133,Walking,WGTWACNX,train
+Wolf,133,Walking,WZKHHCNX,test
+Wolf,133,Walking,XDVZUFGA,train
+Wolf,133,Walking,XFIZXCNX,test
+Wolf,133,Walking,XRTWVFGA,train
+Wolf,133,Walking,XSUBUCNX,train
+Wolf,133,Walking,XYNMICNX,test
+Wolf,133,Walking,YSVFJCNX,train
+Wolf,133,Walking,YXJBZFGA,train
+Wolf,133,Walking,ZABYMFGA,train
+Wolf,133,Walking,ZDJZICNX,test
+Wolf,133,Walking,ZMKWRDSN,train
+Wolf,133,Walking,ZMWNVCNX,test

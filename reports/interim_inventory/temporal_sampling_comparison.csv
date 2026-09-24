@@ -1,0 +1,4 @@
+configuration,sampling_fps,sequence_length,nominal_seconds,total_model_eligible_clips,clips_without_padding,clips_with_padding,padding_percentage,mean_padding_frames,max_padding_frames,train_clips,train_without_padding,train_with_padding,test_clips,test_without_padding,test_with_padding,calm_clips,calm_without_padding,calm_with_padding,agitated_clips,agitated_without_padding,agitated_with_padding
+A,8,16,2.0,68,41,27,39.71,6.44,15,47,27,20,21,14,7,20,12,8,48,29,19
+B,8,24,3.0,68,29,39,57.35,11.54,23,47,19,28,21,10,11,20,10,10,48,19,29
+C,8,32,4.0,68,20,48,70.59,16.88,31,47,13,34,21,7,14,20,6,14,48,14,34

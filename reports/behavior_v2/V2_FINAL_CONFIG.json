@@ -1,0 +1,23 @@
+{
+  "selected_model_experiment": "exp_d_temporal_tracking",
+  "model_config": {
+    "model_type": "mamba",
+    "seq_length": 16,
+    "d_model": 64,
+    "num_layers": 2,
+    "reliability_mode": "both",
+    "tracking_mode": "temporal_consistent"
+  },
+  "in_features": 75,
+  "trainable_parameters": 136257,
+  "cv_performance": {
+    "mean_balanced_accuracy": 74.17,
+    "std_balanced_accuracy": 10.0,
+    "mean_accuracy": 74.44,
+    "mean_f1": 0.7932,
+    "calm_recall": 71.67,
+    "agit_recall": 76.67
+  },
+  "selection_rationale": "Selected strictly on 47 development clips via 5-fold cross-validation by pre-specified primary rule of highest stable balanced accuracy and balanced class recall.",
+  "checkpoint_path": "checkpoints\\mamba_behavior_v2\\final.pt"
+}

@@ -1,0 +1,22 @@
+clip_id,action,true_label,true_behavior,num_windows,v2_prob,v2_score,v2_pred_label,v2_pred_behavior,v2_score_band,top_window_id,top_window_prob,total_valid_frames,total_ambiguous_frames,is_padded_clip
+AVFJUXDO,Fleeing,1,AGITATED,1,0.608,61,1,AGITATED,Moderate Activity / Transitional,AVFJUXDO_w00,0.608,13,4,True
+CSHALXDO,Attacking,1,AGITATED,3,0.9996,100,1,AGITATED,High Agitation,CSHALXDO_w02,0.9997,48,1,False
+DCVGZXDO,Attacking,1,AGITATED,5,0.2388,24,0,CALM,Low Agitation / Calm-like,DCVGZXDO_w00,0.9827,80,80,False
+DWOLCXDO,Attacking; Chasing,1,AGITATED,2,0.9925,99,1,AGITATED,High Agitation,DWOLCXDO_w00,0.995,32,21,False
+EBOJNFGA,Running,1,AGITATED,2,0.019,2,0,CALM,Low Agitation / Calm-like,EBOJNFGA_w00,0.0372,27,4,False
+EPQDGFGA,Running,1,AGITATED,6,0.9976,100,1,AGITATED,High Agitation,EPQDGFGA_w01,0.9998,88,24,False
+ETOKQXGD,Chasing,1,AGITATED,1,0.0003,0,0,CALM,Low Agitation / Calm-like,ETOKQXGD_w00,0.0003,11,0,True
+EVQRFFGA,Walking,0,CALM,5,0.9996,100,1,AGITATED,High Agitation,EVQRFFGA_w00,0.9998,80,47,False
+GICIEXDO,Running,1,AGITATED,1,0.9997,100,1,AGITATED,High Agitation,GICIEXDO_w00,0.9997,6,0,True
+GNCBFXGD,Biting; Attacking,1,AGITATED,5,0.0266,3,0,CALM,Low Agitation / Calm-like,GNCBFXGD_w03,0.0794,62,17,False
+IKAMHFGA,Running,1,AGITATED,1,0.9998,100,1,AGITATED,High Agitation,IKAMHFGA_w00,0.9998,16,0,False
+KURRZFGA,Running,1,AGITATED,1,0.9996,100,1,AGITATED,High Agitation,KURRZFGA_w00,0.9996,8,2,True
+PEPZMXDO,Jumping,1,AGITATED,2,0.999,100,1,AGITATED,High Agitation,PEPZMXDO_w00,0.9997,30,0,False
+PPOLHFGA,Running,1,AGITATED,3,0.0939,9,0,CALM,Low Agitation / Calm-like,PPOLHFGA_w02,0.1551,39,2,False
+RAUURFGA,Running,1,AGITATED,1,0.9994,100,1,AGITATED,High Agitation,RAUURFGA_w00,0.9994,2,2,True
+SKCIHXDO,Chasing,1,AGITATED,1,0.9656,97,1,AGITATED,High Agitation,SKCIHXDO_w00,0.9656,11,8,True
+SOXNEFGA,Walking,0,CALM,1,0.9749,97,1,AGITATED,High Agitation,SOXNEFGA_w00,0.9749,8,1,True
+TNANEFGA,Walking,0,CALM,5,0.3448,34,0,CALM,Low Agitation / Calm-like,TNANEFGA_w02,0.902,68,1,False
+TVAUKXGD,Biting; Attacking; Chasing,1,AGITATED,6,0.0019,0,0,CALM,Low Agitation / Calm-like,TVAUKXGD_w04,0.0085,70,18,False
+USTTFFGA,Running,1,AGITATED,7,0.9996,100,1,AGITATED,High Agitation,USTTFFGA_w00,0.9998,112,0,False
+ZPTIZXDO,Running; Jumping; Walking,1,AGITATED,3,0.9998,100,1,AGITATED,High Agitation,ZPTIZXDO_w00,0.9998,42,0,False
