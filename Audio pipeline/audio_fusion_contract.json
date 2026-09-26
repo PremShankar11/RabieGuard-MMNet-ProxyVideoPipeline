@@ -1,0 +1,28 @@
+{
+  "modality": "audio",
+  "score_range": [
+    0,
+    1
+  ],
+  "risk_range": [
+    0,
+    100
+  ],
+  "score_meaning": "calibrated P(abnormal-proxy) \u2014 higher = more agitated-sounding",
+  "fields": {
+    "audio_score": "float, 0-1, calibrated",
+    "audio_risk": "int, 0-100",
+    "audio_confidence": "float, 0-1, distance from decision boundary",
+    "audio_present": "bool, True if energy_db > silence threshold",
+    "energy_db": "float, RMS in dBFS"
+  },
+  "window": {
+    "sample_rate": 16000,
+    "duration_sec": 3,
+    "hop_length": 256,
+    "n_mels": 64
+  },
+  "model_path": "/content/drive/MyDrive/RabieGuard/models/audio_model_v2.pth",
+  "calibration_path": "/content/drive/MyDrive/RabieGuard/models/audio_calibration.npz",
+  "warning": "trained on proxy data \u2014 do not report as rabies detection"
+}

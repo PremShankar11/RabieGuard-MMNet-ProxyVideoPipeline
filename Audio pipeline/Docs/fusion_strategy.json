@@ -1,0 +1,101 @@
+{
+  "version": "1.0",
+  "date": "20260923_181339",
+  "title": "Audio-Video Fusion Strategy (Interim, Proxy-Data Stage)",
+  "caveat": "Neither modality is detecting rabies at this stage. Both models are trained on proxy data and output a 'agitation-likeness' score. Do NOT describe these outputs as rabies detection in any report, slide, or conversation.",
+  "score_definitions": {
+    "audio_score": {
+      "range": [
+        0.0,
+        1.0
+      ],
+      "meaning": "calibrated P(agitated-proxy | audio)",
+      "source": "AudioNet v2 + isotonic calibration"
+    },
+    "video_score": {
+      "range": [
+        0.0,
+        1.0
+      ],
+      "meaning": "calibrated P(agitated-proxy | video)",
+      "source": "VideoNet (owned by video handler)"
+    }
+  },
+  "reliability_signals": {
+    "audio_reliability": {
+      "description": "how trustworthy the audio score is, based on raw signal",
+      "components": [
+        "audio_present (bool)  \u2014 energy_db > silence threshold",
+        "energy_db (float)     \u2014 RMS in dBFS",
+        "snr_estimate (float)  \u2014 optional, if computed"
+      ],
+      "range": [
+        0.0,
+        1.0
+      ],
+      "fallback": "0.0 when audio_present is False"
+    },
+    "video_reliability": {
+      "description": "how trustworthy the video score is, based on raw signal",
+      "components": [
+        "mean_luma (float)     \u2014 brightness of the frame",
+        "motion_energy (float)",
+        "video_present (bool)  \u2014 e.g. luma > darkness threshold"
+      ],
+      "range": [
+        0.0,
+        1.0
+      ],
+      "fallback": "0.0 when video_present is False"
+    }
+  },
+  "confidence_signals": {
+    "audio_confidence": "min(1, 2 * |audio_score - 0.5|)",
+    "video_confidence": "same formula on video_score",
+    "purpose": "distinguishes 'I am sure this is agitated' from 'I have no idea'"
+  },
+  "fusion_rule": {
+    "type": "reliability-and-confidence-weighted average",
+    "formula": "w_audio  = audio_reliability  * audio_confidence\nw_video  = video_reliability  * video_confidence\nfinal    = (w_audio * audio_score + w_video * video_score) / (w_audio + w_video + eps)",
+    "eps": 1e-08,
+    "notes": [
+      "When audio_present is False \u2192 w_audio = 0 \u2192 final falls back to video-only.",
+      "When video is dark \u2192 video_reliability \u2248 0 \u2192 final falls back to audio-only.",
+      "When both are weak \u2192 both weights near 0 \u2192 fusion emits low confidence, not a random score."
+    ]
+  },
+  "temporal_alignment": {
+    "fusion_tick_hz": 2,
+    "tick_seconds": 0.5,
+    "time_origin": "t=0 at first video frame of the clip",
+    "audio_window_seconds": 3.0,
+    "audio_hop_seconds": 1.5,
+    "rule": "Both modalities emit one (score, reliability, confidence) triple per fusion tick. A modality's internal window may span several ticks; the value for each tick is the average over the windows overlapping that tick."
+  },
+  "missing_modality_contract": {
+    "present_field": "explicit boolean, never a numeric sentinel",
+    "missing_audio": "audio_present=False, audio_score=None",
+    "missing_video": "video_present=False, video_score=None",
+    "both_missing": "fusion emits final=None, no_score_reason='no_input'"
+  },
+  "per_tick_payload": {
+    "t": "float, seconds from clip start",
+    "audio_score": "float | None",
+    "audio_reliability": "float | None",
+    "audio_confidence": "float | None",
+    "audio_present": "bool",
+    "video_score": "float | None",
+    "video_reliability": "float | None",
+    "video_confidence": "float | None",
+    "video_present": "bool",
+    "final_score": "float | None  \u2014 0..1, calibrated",
+    "final_risk": "int | None    \u2014 0..100",
+    "final_confidence": "float | None"
+  },
+  "deployment_notes": [
+    "Darkness threshold and silence threshold must be agreed in writing.",
+    "Both sides must resample onto the same 2 Hz grid before fusion.",
+    "Calibrate each modality separately, then fuse \u2014 do not fuse raw logits.",
+    "Log both raw and calibrated scores during testing for debugging."
+  ]
+}
