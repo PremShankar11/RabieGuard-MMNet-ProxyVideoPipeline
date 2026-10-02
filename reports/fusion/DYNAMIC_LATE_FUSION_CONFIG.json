@@ -1,0 +1,92 @@
+{
+  "fusion_method": "dynamic_confidence_late_fusion",
+  "version": "1.0.0-frozen-multimodal",
+  "timestamp": "2026-09-30T10:35:00Z",
+  "commit_hash": "unversioned_archive_release_v2.0",
+  "scientific_role": "Non-invasive canine behavioral screening / risk-assessment prototype (NOT a rabies diagnostic system)",
+  "unimodal_models": {
+    "video": {
+      "name": "Zero Rabies-MMNet Video V2 (exp_d_temporal_tracking)",
+      "status": "FROZEN",
+      "architecture": "Mamba S6",
+      "num_layers": 2,
+      "d_model": 64,
+      "d_state": 16,
+      "d_conv": 4,
+      "expand": 2,
+      "trainable_parameters": 136257,
+      "checkpoint_path": "checkpoints/mamba_behavior_v2/final.pt",
+      "pose_checkpoint_path": "checkpoints/dog_pose/best.pt",
+      "sampling_fps": 8.0,
+      "window_length_frames": 16,
+      "window_duration_seconds": 2.0,
+      "stride_frames": 8,
+      "stride_duration_seconds": 1.0,
+      "operational_classes": ["CALM", "AGITATED"]
+    },
+    "audio": {
+      "name": "AudioNet v2",
+      "status": "FROZEN",
+      "architecture": "2D Mel-Spectrogram CNN with Spatial Attention",
+      "trainable_parameters": 6179714,
+      "checkpoint_path": "Audio pipeline/audio_model_v2.pth",
+      "calibration_path": "Audio pipeline/audio_calibration.npz",
+      "sample_rate_hz": 16000,
+      "window_duration_seconds": 3.0,
+      "hop_duration_seconds": 1.5,
+      "n_mels": 64,
+      "n_fft": 1024,
+      "hop_length": 256,
+      "calibration_method": "IsotonicRegression (out_of_bounds='clip', y_min=0.0, y_max=1.0)"
+    }
+  },
+  "confidence_definitions": {
+    "margin_confidence": "min(1.0, 2.0 * abs(prob - 0.50))",
+    "video_reliability": "valid_frame_pct/100.0 * mean_pose_conf * (1.0 - 0.5 * amb_pct/100.0)",
+    "audio_reliability": "clip((energy_db - (-50.0 dBFS)) / 35.0, 0.1, 1.0) when (audio_present and energy_db > -50.0 dBFS) else 0.0",
+    "effective_video_confidence": "Cv_eff = video_confidence * video_reliability",
+    "effective_audio_confidence": "Ca_eff = audio_confidence * audio_reliability"
+  },
+  "weight_calculation": {
+    "formula_video": "Wv = Cv_eff / (Cv_eff + Ca_eff)",
+    "formula_audio": "Wa = Ca_eff / (Cv_eff + Ca_eff)",
+    "constraint": "Wv + Wa == 1.0, Wv in [0.0, 1.0], Wa in [0.0, 1.0]",
+    "zero_confidence_fallback": {
+      "video_only_present": "Wv = 1.0, Wa = 0.0",
+      "audio_only_present": "Wv = 0.0, Wa = 1.0",
+      "both_or_neither_present": "Wv = 0.50, Wa = 0.50"
+    }
+  },
+  "temporal_alignment": {
+    "grid_tick_seconds": 0.5,
+    "grid_tick_hz": 2.0,
+    "time_origin": "t=0 at first video frame / audio sample",
+    "overlap_rule": "Windows overlapping tick [t0, t1] (start < t1 and end > t0) are aggregated via arithmetic mean"
+  },
+  "aggregation": {
+    "segment_level_fusion": "R1_segment = Wv_seg * Pv_seg + Wa_seg * Pa_seg",
+    "clip_level_fusion": "R1_clip = Wv_clip * Pv_clip + Wa_clip * Pa_clip",
+    "score_scaling": "Multimodal Behavioral Risk Score = round(R1 * 100)"
+  },
+  "risk_thresholds": {
+    "range": [0, 100],
+    "bands": [
+      {
+        "band": "LOW",
+        "score_range": [0, 35],
+        "description": "Low Agitation / Calm-like baseline"
+      },
+      {
+        "band": "MEDIUM",
+        "score_range": [36, 65],
+        "description": "Moderate Activity / Transitional dynamics"
+      },
+      {
+        "band": "HIGH",
+        "score_range": [66, 100],
+        "description": "High Agitation / Elevated behavioral arousal"
+      }
+    ]
+  },
+  "disclaimer": "Zero Rabies-MMNet is a research prototype for non-invasive behavioral screening / risk assessment. Unimodal and multimodal scores are operational behavioral proxies. NOT a clinical rabies diagnostic tool."
+}

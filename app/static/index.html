@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zero Rabies-MMNet — Video Behavioral Screening</title>
-  <meta name="description" content="Non-invasive canine behavioral screening and risk-assessment prototype using YOLO11n-Pose and frozen Mamba S6 temporal modeling.">
+  <title>Zero Rabies-MMNet — Multimodal Behavioral Screening</title>
+  <meta name="description" content="Non-invasive canine behavioral screening and risk-assessment prototype using Frozen Video V2 (Mamba S6), Frozen Audio V2 (AudioNet), and Dynamic Confidence-Aware Late Fusion.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -22,97 +22,127 @@
           </div>
           <div class="brand-text">
             <h1 class="brand-title">ZERO RABIES-MMNET</h1>
-            <p class="brand-subtitle">Video Behavioral Screening & Risk Assessment Component</p>
+            <p class="brand-subtitle">Multimodal Behavioral Screening & Risk Assessment (Approach 1: Dynamic Late Fusion)</p>
           </div>
         </div>
         <div class="header-badges">
-          <span class="chip chip-frozen" id="badge-model">Mamba S6 V2 (Frozen)</span>
-          <span class="chip chip-cyan" id="badge-pose">YOLO11n-Pose (24 Kpts)</span>
-          <span class="chip chip-purple" id="badge-fps">8.0 FPS Sampling</span>
-          <span class="chip chip-device" id="badge-device">Device: CUDA</span>
+          <span class="chip chip-frozen" id="badge-video">Video V2 (Mamba S6)</span>
+          <span class="chip chip-cyan" id="badge-audio">Audio V2 (AudioNet)</span>
+          <span class="chip chip-purple" id="badge-fusion">Dynamic Late Fusion</span>
+          <span class="chip chip-device" id="badge-workflow">Single-Video Input</span>
         </div>
       </div>
     </header>
 
-    <!-- Top Scientific Disclaimer Alert -->
-    <section class="banner-disclaimer">
+    <!-- Prominent Scientific Disclaimer Alert -->
+    <section class="banner-disclaimer" id="scientific-boundary-banner">
       <div class="disclaimer-content">
         <div class="disclaimer-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="10"></circle>
             <line x1="12" y1="8" x2="12" y2="12"></line>
             <line x1="12" y1="16" x2="12.01" y2="16"></line>
           </svg>
         </div>
         <div class="disclaimer-text">
-          <strong>Scientific Screening Boundary:</strong> Zero Rabies-MMNet is a research prototype for non-invasive behavioral screening and risk assessment. The video branch estimates operational behavioral arousal from canine pose dynamics. It is <u>NOT</u> a veterinary diagnostic system and does <u>NOT</u> diagnose rabies or determine clinical infection status.
+          <strong>IMPORTANT — Research Prototype Boundary:</strong> Zero Rabies-MMNet is a research prototype for <u>non-invasive behavioral screening and risk assessment</u>. Unimodal and multimodal scores represent operational behavioral/arousal proxies. It is <u>NOT</u> a veterinary diagnostic system and does <u>NOT</u> determine clinical rabies infection.
         </div>
       </div>
     </section>
 
     <!-- Main Container -->
     <main class="main-container">
-      <!-- Input Panel: Upload & Demo -->
+      <!-- Input Panel: Single Canine Video Upload -->
       <section class="card input-card" id="upload-section">
         <div class="card-header">
           <div class="card-title-group">
             <h2 class="card-title">Canine Video Input</h2>
-            <p class="card-desc">Upload a canine video or choose a validated development clip to estimate temporal behavioral state.</p>
+            <p class="card-desc">Upload one canine video. Audio embedded in the video will be extracted automatically for multimodal analysis.</p>
           </div>
           <div class="supported-formats">
-            <span>Supported: MP4, MOV, AVI, MKV</span>
+            <span>Accepted Formats: MP4, MOV, AVI</span>
           </div>
         </div>
 
         <div class="card-body">
-          <!-- Dropzone -->
-          <div class="dropzone" id="video-dropzone">
-            <input type="file" id="video-input" accept=".mp4,.mov,.avi,.mkv,.webm" class="file-input-hidden">
-            <div class="dropzone-inner">
-              <div class="dropzone-icon">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                  <polyline points="17 8 12 3 7 8"></polyline>
-                  <line x1="12" y1="3" x2="12" y2="15"></line>
-                </svg>
+          <!-- Single Video Dropzone -->
+          <div class="single-upload-container">
+            <div class="dropzone single-video-dropzone" id="video-dropzone">
+              <input type="file" id="video-input" accept=".mp4,.mov,.avi,.mkv,.webm" class="file-input-hidden">
+              <div class="dropzone-inner">
+                <div class="dropzone-icon">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                  </svg>
+                </div>
+                <p class="dropzone-prompt"><strong>Upload Dog Video</strong> or <span class="browse-link">browse files</span></p>
+                <p class="dropzone-hint">Upload one canine video. Audio embedded in the video will be extracted automatically for multimodal analysis.</p>
               </div>
-              <p class="dropzone-prompt"><strong>Drag & Drop canine video</strong> or <span class="browse-link">browse files</span></p>
-              <p class="dropzone-hint">Internally resampled to 8 FPS for 16-frame temporal sequence analysis</p>
+            </div>
+
+            <!-- Video File & Stream Metadata Card (Shown after selection) -->
+            <div class="media-inspection-card hidden" id="media-inspection-card">
+              <div class="inspection-header">
+                <span class="inspection-title">📹 Media Stream Inspection</span>
+                <span class="inspection-badge" id="inspection-status-badge">Inspecting...</span>
+              </div>
+              <div class="inspection-grid">
+                <div class="inspect-item">
+                  <span class="inspect-label">Video:</span>
+                  <span class="inspect-val" id="inspect-video-name">--</span>
+                </div>
+                <div class="inspect-item">
+                  <span class="inspect-label">File Size:</span>
+                  <span class="inspect-val" id="inspect-file-size">--</span>
+                </div>
+                <div class="inspect-item">
+                  <span class="inspect-label">Duration:</span>
+                  <span class="inspect-val" id="inspect-duration">--</span>
+                </div>
+                <div class="inspect-item">
+                  <span class="inspect-label">Audio Track:</span>
+                  <span class="inspect-val" id="inspect-audio-track">--</span>
+                </div>
+                <div class="inspect-item">
+                  <span class="inspect-label">Audio Processing:</span>
+                  <span class="inspect-val" id="inspect-audio-proc">16 kHz mono</span>
+                </div>
+                <div class="inspect-item">
+                  <span class="inspect-label">Status:</span>
+                  <span class="inspect-val font-highlight" id="inspect-status-msg">Ready for multimodal screening</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- Selected File Card -->
-          <div class="file-preview-card hidden" id="file-preview-card">
-            <div class="file-info">
-              <div class="file-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polygon points="23 7 16 12 23 17 23 7"></polygon>
-                  <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-                </svg>
-              </div>
-              <div class="file-details">
-                <div class="file-name" id="selected-file-name">video.mp4</div>
-                <div class="file-meta" id="selected-file-size">0.0 MB</div>
-              </div>
-            </div>
-            <button class="btn btn-secondary btn-sm" id="btn-clear-file" type="button">Change File</button>
-          </div>
-
-          <!-- Quick Demos -->
+          <!-- Quick Standardized Multimodal Validation Demos (For validation benchmarks) -->
           <div class="demo-section">
-            <span class="demo-label">Quick Validated Demo Clips:</span>
+            <span class="demo-label">Standardized Multimodal Scenarios:</span>
             <div class="demo-buttons">
-              <button class="btn btn-pill" data-clip="YSWGBGCS">
+              <button class="btn btn-pill" data-scenario="SYNTH_01_CALM_RESTING_SILENT">
                 <span class="demo-dot calm-dot"></span>
-                Calm / Still (YSWGBGCS)
+                1. Resting / Silent (Calm)
               </button>
-              <button class="btn btn-pill" data-clip="AWJEUGCS">
+              <button class="btn btn-pill" data-scenario="SYNTH_02_HIGH_AGITATION_CONCORDANT">
                 <span class="demo-dot agitated-dot"></span>
-                Agitated / Running (AWJEUGCS)
+                2. Concordant High Agitation
               </button>
-              <button class="btn btn-pill" data-clip="EUKRNXGD">
+              <button class="btn btn-pill" data-scenario="SYNTH_03_OCCLUDED_VIDEO_VOCAL_DISTRESS">
                 <span class="demo-dot multi-dot"></span>
-                Multi-Dog Pack (EUKRNXGD)
+                3. Occluded Video + Distress Growl
+              </button>
+              <button class="btn btn-pill" data-scenario="SYNTH_04_ACOUSTIC_NOISE_CLEAR_MOTION">
+                <span class="demo-dot warning-dot"></span>
+                4. Acoustic Noise + Clear Motion
+              </button>
+              <button class="btn btn-pill" data-scenario="SYNTH_05_TRANSITIONAL_BEHAVIOR">
+                <span class="demo-dot transitional-dot"></span>
+                5. Transitional State
+              </button>
+              <button class="btn btn-pill" data-scenario="SYNTH_06_DISCORDANT_EQUAL_CONFIDENCE">
+                <span class="demo-dot neutral-dot"></span>
+                6. Conflicting Modalities
               </button>
             </div>
           </div>
@@ -123,8 +153,9 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
               </svg>
-              <span>Analyze Canine Behavior</span>
+              <span>Execute Multimodal Screening</span>
             </button>
+            <button class="btn btn-secondary" id="btn-reset" type="button">Reset</button>
           </div>
         </div>
       </section>
@@ -135,33 +166,33 @@
           <div class="progress-header">
             <div class="spinner"></div>
             <div class="progress-titles">
-              <h3 class="progress-title" id="progress-stage-title">Processing Video...</h3>
-              <p class="progress-subtitle" id="progress-stage-desc">Executing frozen V2 pipeline stages</p>
+              <h3 class="progress-title" id="progress-stage-title">Processing Canine Video...</h3>
+              <p class="progress-subtitle" id="progress-stage-desc">Executing frozen unimodal pipelines & dynamic late fusion</p>
             </div>
           </div>
           <div class="progress-bar-track">
-            <div class="progress-bar-fill" id="progress-bar-fill" style="width: 15%;"></div>
+            <div class="progress-bar-fill" id="progress-bar-fill" style="width: 20%;"></div>
           </div>
           <div class="pipeline-steps">
             <div class="step-item active" id="step-1">
               <span class="step-dot"></span>
-              <span class="step-name">Video Validation & Decoding</span>
+              <span class="step-name">1. Video V2 Inference (Mamba S6 & YOLO Pose Tracking)</span>
             </div>
             <div class="step-item" id="step-2">
               <span class="step-dot"></span>
-              <span class="step-name">8 FPS Temporal Sampling</span>
+              <span class="step-name">2. Embedded Audio Extraction (16 kHz Mono PCM via FFmpeg)</span>
             </div>
             <div class="step-item" id="step-3">
               <span class="step-dot"></span>
-              <span class="step-name">YOLO11n-Pose (24 Keypoints)</span>
+              <span class="step-name">3. Audio V2 Inference (AudioNet v2 & Isotonic Calibration)</span>
             </div>
             <div class="step-item" id="step-4">
               <span class="step-dot"></span>
-              <span class="step-name">Temporal Canine Identity Tracking</span>
+              <span class="step-name">4. Synchronized 0.5s Temporal Grid Alignment</span>
             </div>
             <div class="step-item" id="step-5">
               <span class="step-dot"></span>
-              <span class="step-name">Frozen Mamba S6 Temporal Scoring</span>
+              <span class="step-name">5. Dynamic Confidence Late Fusion & Multimodal Risk Assessment</span>
             </div>
           </div>
         </div>
@@ -179,7 +210,7 @@
               </svg>
             </div>
             <div>
-              <h3 class="error-title" id="error-title">Inference Error</h3>
+              <h3 class="error-title" id="error-title">Screening Pipeline Error</h3>
               <p class="error-message" id="error-message">Error details go here.</p>
             </div>
           </div>
@@ -189,222 +220,305 @@
 
       <!-- Results Display Section -->
       <section class="results-wrapper hidden" id="results-section">
-        <!-- Warning Banner if present -->
-        <div class="warning-banner hidden" id="warning-banner">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-            <line x1="12" y1="9" x2="12" y2="13"></line>
-            <line x1="12" y1="17" x2="12.01" y2="17"></line>
-          </svg>
-          <span id="warning-text">Warning message goes here.</span>
+        <!-- Scenario Description Banner if available -->
+        <div class="scenario-banner hidden" id="scenario-banner">
+          <span class="scenario-tag">Validated Scenario</span>
+          <span id="scenario-desc-text">Scenario description</span>
         </div>
 
-        <div class="results-grid">
-          <!-- Primary Screening Card -->
-          <div class="card result-card">
-            <div class="card-header">
-              <h2 class="card-title">Video Behavioral Screening</h2>
-              <span class="card-badge" id="res-score-band">Moderate Activity</span>
-            </div>
-            <div class="card-body">
-              <div class="state-container">
-                <div class="state-label-caption">Operational Behavioral State</div>
-                <div class="state-value" id="res-behavior">AGITATED</div>
-              </div>
-
-              <!-- Gauge / Score presentation -->
-              <div class="score-display">
-                <div class="score-gauge-box">
-                  <div class="score-number-big" id="res-score-num">87</div>
-                  <div class="score-denom">/ 100</div>
-                </div>
-                <div class="score-details-box">
-                  <div class="metric-row">
-                    <span class="metric-name">Behavioral Probability:</span>
-                    <span class="metric-val" id="res-prob">87%</span>
-                  </div>
-                  <div class="metric-row">
-                    <span class="metric-name">Interpretive Band:</span>
-                    <span class="metric-val" id="res-band-detail">High Agitation</span>
-                  </div>
-                  <div class="interpretation-box" id="res-interpretation">
-                    High observed behavioral arousal under the project's operational behavioral scoring scheme.
-                  </div>
-                </div>
-              </div>
-
-              <!-- Score Meter Track -->
-              <div class="score-meter-wrap">
-                <div class="meter-bar">
-                  <div class="meter-fill" id="meter-fill" style="width: 87%;"></div>
-                  <div class="meter-marker" style="left: 35%;"></div>
-                  <div class="meter-marker" style="left: 65%;"></div>
-                </div>
-                <div class="meter-labels">
-                  <span>0 (Calm-like)</span>
-                  <span>35 (Transitional)</span>
-                  <span>65 (Elevated)</span>
-                  <span>100 (Agitated)</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Video / Pose Quality Card -->
-          <div class="card quality-card">
-            <div class="card-header">
-              <h2 class="card-title">Video / Pose Quality</h2>
-              <span class="badge-quality" id="res-quality-badge">GOOD</span>
-            </div>
-            <div class="card-body">
-              <div class="quality-grid">
-                <div class="q-metric-card">
-                  <span class="q-label">Valid Pose Frames</span>
-                  <span class="q-val" id="res-valid-pct">91.0%</span>
-                  <span class="q-sub" id="res-valid-count">72 of 79 frames</span>
-                </div>
-                <div class="q-metric-card">
-                  <span class="q-label">Pose Confidence</span>
-                  <span class="q-val" id="res-pose-conf">0.54</span>
-                  <span class="q-sub">24 Keypoint Mean</span>
-                </div>
-                <div class="q-metric-card">
-                  <span class="q-label">Multi-Dog Ambiguity</span>
-                  <span class="q-val" id="res-amb-level">LOW</span>
-                  <span class="q-sub" id="res-amb-pct">10.1% ambiguous</span>
-                </div>
-                <div class="q-metric-card">
-                  <span class="q-label">Temporal Windows</span>
-                  <span class="q-val" id="res-num-windows">9</span>
-                  <span class="q-sub" id="res-padded-info">0 padded windows</span>
-                </div>
-              </div>
-              <div class="quality-summary-note" id="res-quality-note">
-                High pose confidence and consistent canine tracking across video.
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Video Preview Section -->
-        <div class="card video-preview-card" id="video-preview-section">
+        <!-- Input Provenance Summary Card -->
+        <div class="card input-summary-card">
           <div class="card-header">
-            <h2 class="card-title">Pose & Tracking Verification Preview</h2>
-            <div class="video-toggles">
-              <button class="btn btn-pill active" id="tab-annotated">Tracked Skeleton Overlay</button>
-              <button class="btn btn-pill" id="tab-frames">Frame-by-Frame Inspector</button>
-              <button class="btn btn-pill" id="tab-original">Source Video</button>
-            </div>
+            <h3 class="card-title">Input & Audio Track Provenance</h3>
+            <span class="card-badge" id="sum-pipeline-badge">Multimodal (Video + Extracted Audio)</span>
           </div>
           <div class="card-body">
-            <div class="video-container">
-              <video id="player-annotated" controls autoplay muted playsinline class="preview-player"></video>
-              <div id="frame-inspector-view" class="frame-inspector-container hidden">
-                <img id="frame-img-display" class="frame-img-display" alt="Tracked Pose Frame">
-                <div class="scrubber-bar">
-                  <button class="btn btn-secondary btn-sm" id="btn-play-frames" type="button">Play</button>
-                  <button class="btn btn-secondary btn-sm" id="btn-prev-frame" type="button">&lt;</button>
-                  <input type="range" id="frame-slider" min="0" max="0" value="0" class="frame-slider">
-                  <button class="btn btn-secondary btn-sm" id="btn-next-frame" type="button">&gt;</button>
-                  <span class="frame-counter" id="frame-counter-label">Frame 1 / 1</span>
-                  <span class="frame-ts" id="frame-ts-label">(0.00s)</span>
+            <div class="input-summary-grid">
+              <div class="summary-col">
+                <span class="summary-lbl">Dog Video</span>
+                <span class="summary-val" id="sum-video-file">--</span>
+              </div>
+              <div class="summary-col">
+                <span class="summary-lbl">Video Duration</span>
+                <span class="summary-val" id="sum-video-duration">--</span>
+              </div>
+              <div class="summary-col">
+                <span class="summary-lbl">Embedded Audio Track</span>
+                <span class="summary-val" id="sum-audio-detected">--</span>
+              </div>
+              <div class="summary-col">
+                <span class="summary-lbl">Audio Processing</span>
+                <span class="summary-val" id="sum-audio-processing">16 kHz mono</span>
+              </div>
+            </div>
+            <div class="summary-note" id="sum-note-text">
+              Audio extracted automatically from the uploaded video file. Both modalities share the exact physical timeline.
+            </div>
+          </div>
+        </div>
+
+        <!-- Authoritative 3-Column Multimodal Screening Layout -->
+        <div class="screening-dashboard-header">
+          <h2>ZERO RABIES-MMNET MULTIMODAL SCREENING</h2>
+          <p class="screening-subtitle">Approach 1: Dynamic Confidence-Aware Late Fusion ($R_1 = W_v P_v + W_a P_a$)</p>
+        </div>
+
+        <div class="multimodal-grid-three">
+          <!-- Modality 1: Video Branch -->
+          <div class="card branch-card video-branch-card">
+            <div class="branch-card-header">
+              <span class="branch-icon">🎥</span>
+              <h3 class="branch-title">VIDEO BRANCH</h3>
+              <span class="quality-badge" id="video-quality-tag">GOOD</span>
+            </div>
+            <div class="branch-card-body">
+              <div class="branch-metric-main">
+                <div class="branch-metric-label">Behavioral Score</div>
+                <div class="branch-metric-val" id="res-video-score">--</div>
+                <div class="branch-metric-sub">Probability: <span id="res-video-prob">--%</span></div>
+              </div>
+              <div class="branch-metric-secondary">
+                <div class="sec-metric-item">
+                  <span class="sec-label">Observation Confidence</span>
+                  <span class="sec-val" id="res-video-conf">--%</span>
+                </div>
+                <div class="sec-metric-item">
+                  <span class="sec-label">Video Reliability</span>
+                  <span class="sec-val" id="res-video-rel">--</span>
+                </div>
+                <div class="sec-metric-item">
+                  <span class="sec-label">Architecture</span>
+                  <span class="sec-val">Mamba S6 V2 (Frozen)</span>
                 </div>
               </div>
-              <video id="player-original" controls muted playsinline class="preview-player hidden"></video>
             </div>
-            <div class="video-legend">
-              <span class="legend-item"><span class="legend-box green"></span> Primary Tracked Dog</span>
-              <span class="legend-item"><span class="legend-box orange"></span> Multi-Dog Scene</span>
-              <span class="legend-item"><span class="legend-dot cyan"></span> 24 Canine Keypoints</span>
-              <span class="legend-item"><span class="legend-line blue"></span> Anatomical Skeleton</span>
+          </div>
+
+          <!-- Modality 2: Audio Branch -->
+          <div class="card branch-card audio-branch-card">
+            <div class="branch-card-header">
+              <span class="branch-icon">🔊</span>
+              <h3 class="branch-title">AUDIO BRANCH</h3>
+              <span class="quality-badge" id="audio-presence-tag">DETECTED</span>
+            </div>
+            <div class="branch-card-body">
+              <div class="branch-metric-main">
+                <div class="branch-metric-label">Acoustic Score</div>
+                <div class="branch-metric-val" id="res-audio-score">--</div>
+                <div class="branch-metric-sub">Calibrated: <span id="res-audio-prob">--%</span></div>
+              </div>
+              <div class="branch-metric-secondary">
+                <div class="sec-metric-item">
+                  <span class="sec-label">Observation Confidence</span>
+                  <span class="sec-val" id="res-audio-conf">--%</span>
+                </div>
+                <div class="sec-metric-item">
+                  <span class="sec-label">Audio Reliability</span>
+                  <span class="sec-val" id="res-audio-rel">--</span>
+                </div>
+                <div class="sec-metric-item">
+                  <span class="sec-label">Track Origin</span>
+                  <span class="sec-val" id="res-audio-origin">Embedded in Video</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modality 3: Dynamic Late Fusion -->
+          <div class="card branch-card fusion-branch-card highlight-card">
+            <div class="branch-card-header">
+              <span class="branch-icon">⚡</span>
+              <h3 class="branch-title">DYNAMIC LATE FUSION</h3>
+              <span class="risk-badge" id="res-risk-level-badge">LOW</span>
+            </div>
+            <div class="branch-card-body">
+              <!-- Dynamic Modality Weights -->
+              <div class="weights-box">
+                <div class="weight-item">
+                  <span class="weight-label">Video Weight ($W_v$)</span>
+                  <span class="weight-val" id="res-weight-video">0.50</span>
+                </div>
+                <div class="weight-divider">+</div>
+                <div class="weight-item">
+                  <span class="weight-label">Audio Weight ($W_a$)</span>
+                  <span class="weight-val" id="res-weight-audio">0.50</span>
+                </div>
+              </div>
+
+              <!-- Final Multimodal Behavioral Risk Score -->
+              <div class="fused-score-box">
+                <div class="fused-score-caption">Final Multimodal Behavioral Risk Score</div>
+                <div class="fused-score-number-wrap">
+                  <span class="fused-score-big" id="res-fused-score">--</span>
+                  <span class="fused-score-denom">/ 100</span>
+                </div>
+                <div class="fused-prob-sub">Fused Probability: <span id="res-fused-prob">--%</span></div>
+                <div class="risk-band-title" id="res-risk-band-title">Low Agitation / Calm-like</div>
+              </div>
+
+              <!-- Risk Meter Bar -->
+              <div class="risk-meter-container">
+                <div class="risk-meter-bar">
+                  <div class="risk-meter-fill" id="risk-meter-fill" style="width: 50%;"></div>
+                  <div class="risk-meter-threshold" style="left: 35%;" title="LOW threshold (35)"></div>
+                  <div class="risk-meter-threshold" style="left: 65%;" title="MEDIUM threshold (65)"></div>
+                </div>
+                <div class="risk-meter-labels">
+                  <span>LOW (0-35)</span>
+                  <span>MEDIUM (36-65)</span>
+                  <span>HIGH (66-100)</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Expandable Technical Details Section -->
-        <div class="card tech-card">
-          <div class="card-header accordion-toggle" id="toggle-tech-details">
-            <div class="accordion-title-group">
-              <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <!-- Input Quality & Modality Metrics Card -->
+        <div class="card quality-info-card">
+          <div class="card-header">
+            <h3 class="card-title">Input Quality & Modality Assessment</h3>
+            <span class="card-badge" id="quality-overall-badge">Quality Assessed</span>
+          </div>
+          <div class="card-body">
+            <div class="quality-info-grid">
+              <div class="q-metric-box">
+                <span class="q-metric-label">Valid Pose Frames</span>
+                <span class="q-metric-val" id="q-valid-frames">--%</span>
+                <span class="q-metric-sub" id="q-mean-pose-conf">Mean Pose Conf: --%</span>
+              </div>
+              <div class="q-metric-box">
+                <span class="q-metric-label">Subject Ambiguity</span>
+                <span class="q-metric-val" id="q-ambiguity-level">LOW</span>
+                <span class="q-metric-sub" id="q-ambiguous-pct">Ambiguous: --%</span>
+              </div>
+              <div class="q-metric-box">
+                <span class="q-metric-label">Embedded Audio Track</span>
+                <span class="q-metric-val" id="q-audio-status">Detected</span>
+                <span class="q-metric-sub" id="q-audio-codec">Codec: --</span>
+              </div>
+              <div class="q-metric-box">
+                <span class="q-metric-label">Acoustic Energy & Reliability</span>
+                <span class="q-metric-val" id="q-audio-energy">-- dBFS</span>
+                <span class="q-metric-sub" id="q-audio-reliability">Reliability: --</span>
+              </div>
+            </div>
+            <div class="quality-note" id="q-note-text"></div>
+          </div>
+        </div>
+
+        <!-- Baseline Comparisons Card -->
+        <div class="card baseline-card">
+          <div class="card-header">
+            <h3 class="card-title">Research Baseline Comparisons</h3>
+            <span class="card-badge">Unimodal vs Fused Benchmarks</span>
+          </div>
+          <div class="card-body">
+            <div class="baseline-table-wrap">
+              <table class="baseline-table">
+                <thead>
+                  <tr>
+                    <th>Pipeline Configuration</th>
+                    <th>Risk Score</th>
+                    <th>Certainty / Confidence</th>
+                    <th>Modality Weight</th>
+                    <th>Classification Band</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Video Only</strong> (Frozen V2)</td>
+                    <td id="base-v-score">--</td>
+                    <td id="base-v-conf">--</td>
+                    <td>1.00</td>
+                    <td><span class="band-tag" id="base-v-band">--</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Audio Only</strong> (Frozen V2)</td>
+                    <td id="base-a-score">--</td>
+                    <td id="base-a-conf">--</td>
+                    <td>1.00</td>
+                    <td><span class="band-tag" id="base-a-band">--</span></td>
+                  </tr>
+                  <tr class="fused-row">
+                    <td><strong>Dynamic Late Fusion</strong> ($W_v P_v + W_a P_a$)</td>
+                    <td><strong id="base-fused-score">--</strong></td>
+                    <td id="base-fused-conf">Dynamic Confidence</td>
+                    <td id="base-fused-weights">Wv: -- / Wa: --</td>
+                    <td><strong class="band-tag" id="base-fused-band">--</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Expandable "Fusion Details" Section -->
+        <div class="card details-card" id="fusion-details-section">
+          <div class="details-toggle-header" id="btn-toggle-details">
+            <div class="toggle-title-group">
+              <svg class="chevron-icon" id="details-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
-              <h2 class="card-title">Technical Model & Inference Details</h2>
+              <h3 class="card-title">Fusion Details (0.5s Synchronized Temporal Log)</h3>
             </div>
-            <span class="chip chip-muted">Traceable Research Artifact</span>
+            <span class="details-hint" id="details-toggle-hint">Click to expand segment-level temporal fusion table</span>
           </div>
 
-          <div class="accordion-content hidden" id="tech-details-content">
-            <div class="card-body">
-              <div class="tech-table-grid">
-                <div class="tech-row"><span class="t-key">Temporal Architecture</span><span class="t-val" id="t-arch">Mamba S6 (2 layers, d_model=64, d_state=16)</span></div>
-                <div class="tech-row"><span class="t-key">Trainable Parameters</span><span class="t-val" id="t-params">136,257</span></div>
-                <div class="tech-row"><span class="t-key">Pose Detector</span><span class="t-val" id="t-pose">YOLO11n-Pose (24 keypoints)</span></div>
-                <div class="tech-row"><span class="t-key">Sampling Frequency</span><span class="t-val" id="t-fps">8.0 FPS (~125ms per step)</span></div>
-                <div class="tech-row"><span class="t-key">Temporal Window</span><span class="t-val" id="t-window">16 frames (2.0s duration, stride 8)</span></div>
-                <div class="tech-row"><span class="t-key">Feature Representation</span><span class="t-val" id="t-features">75 in_features (72 normalized pose + 3 reliability)</span></div>
-                <div class="tech-row"><span class="t-key">Canine Tracking</span><span class="t-val" id="t-tracking">Temporal Consistency (IoU & Proximity Gated)</span></div>
-                <div class="tech-row"><span class="t-key">Frozen Model Weights</span><span class="t-val" id="t-ckpt">checkpoints/mamba_behavior_v2/final.pt</span></div>
-                <div class="tech-row"><span class="t-key">Hardware Device</span><span class="t-val" id="t-device">cuda:0</span></div>
-              </div>
-
-              <!-- Window Probabilities Breakdown -->
-              <div class="window-probs-section">
-                <h4 class="sub-heading">Window Probabilities Breakdown:</h4>
-                <div class="window-chips" id="window-probabilities-chips"></div>
-              </div>
-
-              <!-- Export Controls -->
-              <div class="export-actions">
-                <button class="btn btn-secondary btn-sm" id="btn-download-json">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <polyline points="7 10 12 15 17 10"></polyline>
-                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                  </svg>
-                  Export Inference JSON
-                </button>
-                <button class="btn btn-secondary btn-sm" id="btn-view-manifest">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="12" y1="16" x2="12" y2="12"></line>
-                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                  </svg>
-                  View Frozen Manifest
-                </button>
-              </div>
+          <div class="details-content hidden" id="fusion-details-content">
+            <p class="details-desc">
+              Synchronized 0.5s (2 Hz) alignment grid. Displays per-tick probabilities, observation confidences, dynamic weights, and fused risk scores.
+            </p>
+            <div class="table-responsive">
+              <table class="segments-table" id="segments-table">
+                <thead>
+                  <tr>
+                    <th>Time Interval</th>
+                    <th>Video Prob ($P_v$)</th>
+                    <th>Video Conf ($C_v$)</th>
+                    <th>Video Quality</th>
+                    <th>Audio Prob ($P_a$)</th>
+                    <th>Audio Conf ($C_a$)</th>
+                    <th>Audio Status</th>
+                    <th>$W_v$</th>
+                    <th>$W_a$</th>
+                    <th>Fused Score</th>
+                    <th>Risk Band</th>
+                  </tr>
+                </thead>
+                <tbody id="segments-table-body">
+                  <!-- Dynamically populated -->
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
 
-        <!-- Reset Button -->
-        <div class="reset-wrapper">
-          <button class="btn btn-secondary" id="btn-analyze-another">Analyze Another Video</button>
+        <!-- Video Player preview if annotated video is present -->
+        <div class="card video-player-card hidden" id="video-preview-card">
+          <div class="card-header">
+            <h3 class="card-title">Annotated Canine Pose Tracking Video</h3>
+            <span class="card-badge">YOLO11n 24-Kpt Skeleton</span>
+          </div>
+          <div class="card-body">
+            <video id="annotated-player" controls autoplay muted playsinline class="video-player"></video>
+          </div>
+        </div>
+
+        <!-- Result Card Disclaimer Notice -->
+        <div class="result-disclaimer-card">
+          <div class="disclaimer-mini-icon">ℹ️</div>
+          <div class="disclaimer-mini-text">
+            <strong>Prototype Boundary Reminder:</strong> Research prototype for behavioral screening/risk assessment. Operational behavioral proxies only; not a clinical rabies diagnosis.
+          </div>
         </div>
       </section>
     </main>
 
-    <!-- Modal for Manifest Viewer -->
-    <div class="modal-backdrop hidden" id="manifest-modal">
-      <div class="modal-card">
-        <div class="modal-header">
-          <h3 class="modal-title">Frozen Model Research Manifest</h3>
-          <button class="modal-close" id="btn-close-modal">&times;</button>
-        </div>
-        <div class="modal-body">
-          <pre id="manifest-pre">Loading manifest...</pre>
-        </div>
-      </div>
-    </div>
-
     <!-- Footer -->
     <footer class="app-footer">
       <div class="footer-container">
-        <p class="footer-disclaimer">
-          <strong>Mandatory Research Disclaimer:</strong> Zero Rabies-MMNet is a research prototype for non-invasive behavioral screening / risk assessment. The video branch estimates operational behavioral arousal from canine pose dynamics. It is NOT a veterinary diagnostic system and does NOT determine whether a dog has rabies.
-        </p>
-        <p class="footer-meta">
-          Video V2 Frozen Release &bull; exp_d_temporal_tracking &bull; Final Year Project
-        </p>
+        <p>Zero Rabies-MMNet — Non-Invasive Canine Behavioral Screening & Risk Assessment Prototype.</p>
+        <p class="footer-sub">Frozen Video V2 (Mamba S6) + Frozen Audio V2 (AudioNet) • Dynamic Confidence-Aware Late Fusion.</p>
       </div>
     </footer>
   </div>

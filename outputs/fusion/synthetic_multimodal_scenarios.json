@@ -1,0 +1,1140 @@
+[
+  {
+    "scenario": "SYNTH_01_CALM_RESTING_SILENT",
+    "description": "Dog resting/sleeping. Clear pose visibility, silent ambient audio.",
+    "expected_outcome": "Video dominates (audio silent), resulting in LOW risk level.",
+    "output": {
+      "fusion_method": "dynamic_confidence_late_fusion",
+      "clip_id": "SYNTH_01_CALM_RESTING_SILENT",
+      "video": {
+        "probability": 0.12,
+        "score": 12,
+        "confidence": 0.76,
+        "quality": "GOOD"
+      },
+      "audio": {
+        "probability": null,
+        "score": null,
+        "confidence": 0.0
+      },
+      "weights": {
+        "video": 1.0,
+        "audio": 0.0
+      },
+      "fused": {
+        "risk_probability": 0.12,
+        "risk_score": 12,
+        "risk_level": "LOW"
+      },
+      "temporal": {
+        "start_time": 0.0,
+        "end_time": 4.0
+      },
+      "baselines": {
+        "video_only": {
+          "probability": 0.12,
+          "score": 12,
+          "confidence": 0.76,
+          "risk_level": "LOW",
+          "quality": "GOOD"
+        },
+        "audio_only": {
+          "probability": null,
+          "score": null,
+          "confidence": 0.0,
+          "risk_level": null,
+          "quality": "SILENT"
+        },
+        "dynamic_late_fusion": {
+          "risk_probability": 0.12,
+          "risk_score": 12,
+          "risk_level": "LOW",
+          "video_weight": 1.0,
+          "audio_weight": 0.0
+        }
+      },
+      "segments": [
+        {
+          "segment_id": 0,
+          "start_time": 0.0,
+          "end_time": 0.5,
+          "video_probability": 0.1,
+          "video_confidence": 0.8,
+          "video_quality": "GOOD",
+          "audio_probability": null,
+          "audio_confidence": 0.0,
+          "audio_quality": "SILENT",
+          "video_weight": 1.0,
+          "audio_weight": 0.0,
+          "fused_probability": 0.1,
+          "fused_score": 10,
+          "risk_level": "LOW"
+        },
+        {
+          "segment_id": 1,
+          "start_time": 0.5,
+          "end_time": 1.0,
+          "video_probability": 0.1,
+          "video_confidence": 0.8,
+          "video_quality": "GOOD",
+          "audio_probability": null,
+          "audio_confidence": 0.0,
+          "audio_quality": "SILENT",
+          "video_weight": 1.0,
+          "audio_weight": 0.0,
+          "fused_probability": 0.1,
+          "fused_score": 10,
+          "risk_level": "LOW"
+        },
+        {
+          "segment_id": 2,
+          "start_time": 1.0,
+          "end_time": 1.5,
+          "video_probability": 0.11,
+          "video_confidence": 0.78,
+          "video_quality": "GOOD",
+          "audio_probability": null,
+          "audio_confidence": 0.0,
+          "audio_quality": "SILENT",
+          "video_weight": 1.0,
+          "audio_weight": 0.0,
+          "fused_probability": 0.11,
+          "fused_score": 11,
+          "risk_level": "LOW"
+        },
+        {
+          "segment_id": 3,
+          "start_time": 1.5,
+          "end_time": 2.0,
+          "video_probability": 0.11,
+          "video_confidence": 0.78,
+          "video_quality": "GOOD",
+          "audio_probability": null,
+          "audio_confidence": 0.0,
+          "audio_quality": "SILENT",
+          "video_weight": 1.0,
+          "audio_weight": 0.0,
+          "fused_probability": 0.11,
+          "fused_score": 11,
+          "risk_level": "LOW"
+        },
+        {
+          "segment_id": 4,
+          "start_time": 2.0,
+          "end_time": 2.5,
+          "video_probability": 0.13,
+          "video_confidence": 0.74,
+          "video_quality": "GOOD",
+          "audio_probability": null,
+          "audio_confidence": 0.0,
+          "audio_quality": "SILENT",
+          "video_weight": 1.0,
+          "audio_weight": 0.0,
+          "fused_probability": 0.13,
+          "fused_score": 13,
+          "risk_level": "LOW"
+        },
+        {
+          "segment_id": 5,
+          "start_time": 2.5,
+          "end_time": 3.0,
+          "video_probability": 0.13,
+          "video_confidence": 0.74,
+          "video_quality": "GOOD",
+          "audio_probability": null,
+          "audio_confidence": 0.0,
+          "audio_quality": "SILENT",
+          "video_weight": 1.0,
+          "audio_weight": 0.0,
+          "fused_probability": 0.13,
+          "fused_score": 13,
+          "risk_level": "LOW"
+        },
+        {
+          "segment_id": 6,
+          "start_time": 3.0,
+          "end_time": 3.5,
+          "video_probability": 0.14,
+          "video_confidence": 0.72,
+          "video_quality": "GOOD",
+          "audio_probability": null,
+          "audio_confidence": 0.0,
+          "audio_quality": "SILENT",
+          "video_weight": 1.0,
+          "audio_weight": 0.0,
+          "fused_probability": 0.14,
+          "fused_score": 14,
+          "risk_level": "LOW"
+        },
+        {
+          "segment_id": 7,
+          "start_time": 3.5,
+          "end_time": 4.0,
+          "video_probability": 0.14,
+          "video_confidence": 0.72,
+          "video_quality": "GOOD",
+          "audio_probability": null,
+          "audio_confidence": 0.0,
+          "audio_quality": "SILENT",
+          "video_weight": 1.0,
+          "audio_weight": 0.0,
+          "fused_probability": 0.14,
+          "fused_score": 14,
+          "risk_level": "LOW"
+        }
+      ],
+      "disclaimer": "Zero Rabies-MMNet is a research prototype for non-invasive behavioral screening / risk assessment. Outputs represent operational behavioral agitation proxies and are NOT clinical rabies diagnoses."
+    }
+  },
+  {
+    "scenario": "SYNTH_02_HIGH_AGITATION_CONCORDANT",
+    "description": "Rapid locomotion/bounding accompanied by repeated barking/growling.",
+    "expected_outcome": "Both modalities strongly agree with high confidence -> HIGH risk level.",
+    "output": {
+      "fusion_method": "dynamic_confidence_late_fusion",
+      "clip_id": "SYNTH_02_HIGH_AGITATION_CONCORDANT",
+      "video": {
+        "probability": 0.88,
+        "score": 88,
+        "confidence": 0.76,
+        "quality": "GOOD"
+      },
+      "audio": {
+        "probability": 0.84,
+        "score": 84,
+        "confidence": 0.68
+      },
+      "weights": {
+        "video": 0.466,
+        "audio": 0.534
+      },
+      "fused": {
+        "risk_probability": 0.8586,
+        "risk_score": 86,
+        "risk_level": "HIGH"
+      },
+      "temporal": {
+        "start_time": 0.0,
+        "end_time": 5.0
+      },
+      "baselines": {
+        "video_only": {
+          "probability": 0.88,
+          "score": 88,
+          "confidence": 0.76,
+          "risk_level": "HIGH",
+          "quality": "GOOD"
+        },
+        "audio_only": {
+          "probability": 0.84,
+          "score": 84,
+          "confidence": 0.68,
+          "risk_level": "HIGH",
+          "quality": "PRESENT"
+        },
+        "dynamic_late_fusion": {
+          "risk_probability": 0.8586,
+          "risk_score": 86,
+          "risk_level": "HIGH",
+          "video_weight": 0.466,
+          "audio_weight": 0.534
+        }
+      },
+      "segments": [
+        {
+          "segment_id": 0,
+          "start_time": 0.0,
+          "end_time": 0.5,
+          "video_probability": 0.85,
+          "video_confidence": 0.7,
+          "video_quality": "GOOD",
+          "audio_probability": 0.82,
+          "audio_confidence": 0.64,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.4607,
+          "audio_weight": 0.5393,
+          "fused_probability": 0.8338,
+          "fused_score": 83,
+          "risk_level": "HIGH"
+        },
+        {
+          "segment_id": 1,
+          "start_time": 0.5,
+          "end_time": 1.0,
+          "video_probability": 0.85,
+          "video_confidence": 0.7,
+          "video_quality": "GOOD",
+          "audio_probability": 0.82,
+          "audio_confidence": 0.64,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.4607,
+          "audio_weight": 0.5393,
+          "fused_probability": 0.8338,
+          "fused_score": 83,
+          "risk_level": "HIGH"
+        },
+        {
+          "segment_id": 2,
+          "start_time": 1.0,
+          "end_time": 1.5,
+          "video_probability": 0.865,
+          "video_confidence": 0.73,
+          "video_quality": "GOOD",
+          "audio_probability": 0.82,
+          "audio_confidence": 0.64,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.4711,
+          "audio_weight": 0.5289,
+          "fused_probability": 0.8412,
+          "fused_score": 84,
+          "risk_level": "HIGH"
+        },
+        {
+          "segment_id": 3,
+          "start_time": 1.5,
+          "end_time": 2.0,
+          "video_probability": 0.865,
+          "video_confidence": 0.73,
+          "video_quality": "GOOD",
+          "audio_probability": 0.84,
+          "audio_confidence": 0.68,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.456,
+          "audio_weight": 0.544,
+          "fused_probability": 0.8514,
+          "fused_score": 85,
+          "risk_level": "HIGH"
+        },
+        {
+          "segment_id": 4,
+          "start_time": 2.0,
+          "end_time": 2.5,
+          "video_probability": 0.9,
+          "video_confidence": 0.8,
+          "video_quality": "GOOD",
+          "audio_probability": 0.84,
+          "audio_confidence": 0.68,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.4788,
+          "audio_weight": 0.5212,
+          "fused_probability": 0.8687,
+          "fused_score": 87,
+          "risk_level": "HIGH"
+        },
+        {
+          "segment_id": 5,
+          "start_time": 2.5,
+          "end_time": 3.0,
+          "video_probability": 0.9,
+          "video_confidence": 0.8,
+          "video_quality": "GOOD",
+          "audio_probability": 0.84,
+          "audio_confidence": 0.68,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.4788,
+          "audio_weight": 0.5212,
+          "fused_probability": 0.8687,
+          "fused_score": 87,
+          "risk_level": "HIGH"
+        },
+        {
+          "segment_id": 6,
+          "start_time": 3.0,
+          "end_time": 3.5,
+          "video_probability": 0.895,
+          "video_confidence": 0.79,
+          "video_quality": "GOOD",
+          "audio_probability": 0.86,
+          "audio_confidence": 0.72,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.4615,
+          "audio_weight": 0.5385,
+          "fused_probability": 0.8762,
+          "fused_score": 88,
+          "risk_level": "HIGH"
+        },
+        {
+          "segment_id": 7,
+          "start_time": 3.5,
+          "end_time": 4.0,
+          "video_probability": 0.895,
+          "video_confidence": 0.79,
+          "video_quality": "GOOD",
+          "audio_probability": 0.86,
+          "audio_confidence": 0.72,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.4615,
+          "audio_weight": 0.5385,
+          "fused_probability": 0.8762,
+          "fused_score": 88,
+          "risk_level": "HIGH"
+        },
+        {
+          "segment_id": 8,
+          "start_time": 4.0,
+          "end_time": 4.5,
+          "video_probability": 0.87,
+          "video_confidence": 0.74,
+          "video_quality": "GOOD",
+          "audio_probability": 0.86,
+          "audio_confidence": 0.72,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.4453,
+          "audio_weight": 0.5547,
+          "fused_probability": 0.8645,
+          "fused_score": 86,
+          "risk_level": "HIGH"
+        },
+        {
+          "segment_id": 9,
+          "start_time": 4.5,
+          "end_time": 5.0,
+          "video_probability": 0.87,
+          "video_confidence": 0.74,
+          "video_quality": "GOOD",
+          "audio_probability": null,
+          "audio_confidence": 0.0,
+          "audio_quality": "NO_INPUT",
+          "video_weight": 1.0,
+          "audio_weight": 0.0,
+          "fused_probability": 0.87,
+          "fused_score": 87,
+          "risk_level": "HIGH"
+        }
+      ],
+      "disclaimer": "Zero Rabies-MMNet is a research prototype for non-invasive behavioral screening / risk assessment. Outputs represent operational behavioral agitation proxies and are NOT clinical rabies diagnoses."
+    }
+  },
+  {
+    "scenario": "SYNTH_03_OCCLUDED_VIDEO_VOCAL_DISTRESS",
+    "description": "Severe visual occlusion / multi-dog ambiguity, but clear acoustic aggressive barking.",
+    "expected_outcome": "Dynamic fusion downweights degraded video and trusts audio -> HIGH risk level.",
+    "output": {
+      "fusion_method": "dynamic_confidence_late_fusion",
+      "clip_id": "SYNTH_03_OCCLUDED_VIDEO_VOCAL_DISTRESS",
+      "video": {
+        "probability": 0.58,
+        "score": 58,
+        "confidence": 0.16,
+        "quality": "LIMITED"
+      },
+      "audio": {
+        "probability": 0.92,
+        "score": 92,
+        "confidence": 0.84
+      },
+      "weights": {
+        "video": 0.0188,
+        "audio": 0.9812
+      },
+      "fused": {
+        "risk_probability": 0.9136,
+        "risk_score": 91,
+        "risk_level": "HIGH"
+      },
+      "temporal": {
+        "start_time": 0.0,
+        "end_time": 4.5
+      },
+      "baselines": {
+        "video_only": {
+          "probability": 0.58,
+          "score": 58,
+          "confidence": 0.16,
+          "risk_level": "MEDIUM",
+          "quality": "LIMITED"
+        },
+        "audio_only": {
+          "probability": 0.92,
+          "score": 92,
+          "confidence": 0.84,
+          "risk_level": "HIGH",
+          "quality": "PRESENT"
+        },
+        "dynamic_late_fusion": {
+          "risk_probability": 0.9136,
+          "risk_score": 91,
+          "risk_level": "HIGH",
+          "video_weight": 0.0188,
+          "audio_weight": 0.9812
+        }
+      },
+      "segments": [
+        {
+          "segment_id": 0,
+          "start_time": 0.0,
+          "end_time": 0.5,
+          "video_probability": 0.55,
+          "video_confidence": 0.1,
+          "video_quality": "LIMITED",
+          "audio_probability": 0.9,
+          "audio_confidence": 0.8,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.0124,
+          "audio_weight": 0.9876,
+          "fused_probability": 0.8957,
+          "fused_score": 90,
+          "risk_level": "HIGH"
+        },
+        {
+          "segment_id": 1,
+          "start_time": 0.5,
+          "end_time": 1.0,
+          "video_probability": 0.55,
+          "video_confidence": 0.1,
+          "video_quality": "LIMITED",
+          "audio_probability": 0.9,
+          "audio_confidence": 0.8,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.0124,
+          "audio_weight": 0.9876,
+          "fused_probability": 0.8957,
+          "fused_score": 90,
+          "risk_level": "HIGH"
+        },
+        {
+          "segment_id": 2,
+          "start_time": 1.0,
+          "end_time": 1.5,
+          "video_probability": 0.575,
+          "video_confidence": 0.15,
+          "video_quality": "LIMITED",
+          "audio_probability": 0.9,
+          "audio_confidence": 0.8,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.0185,
+          "audio_weight": 0.9815,
+          "fused_probability": 0.894,
+          "fused_score": 89,
+          "risk_level": "HIGH"
+        },
+        {
+          "segment_id": 3,
+          "start_time": 1.5,
+          "end_time": 2.0,
+          "video_probability": 0.575,
+          "video_confidence": 0.15,
+          "video_quality": "LIMITED",
+          "audio_probability": 0.92,
+          "audio_confidence": 0.84,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.0177,
+          "audio_weight": 0.9823,
+          "fused_probability": 0.9139,
+          "fused_score": 91,
+          "risk_level": "HIGH"
+        },
+        {
+          "segment_id": 4,
+          "start_time": 2.0,
+          "end_time": 2.5,
+          "video_probability": 0.59,
+          "video_confidence": 0.18,
+          "video_quality": "LIMITED",
+          "audio_probability": 0.92,
+          "audio_confidence": 0.84,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.0211,
+          "audio_weight": 0.9789,
+          "fused_probability": 0.913,
+          "fused_score": 91,
+          "risk_level": "HIGH"
+        },
+        {
+          "segment_id": 5,
+          "start_time": 2.5,
+          "end_time": 3.0,
+          "video_probability": 0.59,
+          "video_confidence": 0.18,
+          "video_quality": "LIMITED",
+          "audio_probability": 0.92,
+          "audio_confidence": 0.84,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.0211,
+          "audio_weight": 0.9789,
+          "fused_probability": 0.913,
+          "fused_score": 91,
+          "risk_level": "HIGH"
+        },
+        {
+          "segment_id": 6,
+          "start_time": 3.0,
+          "end_time": 3.5,
+          "video_probability": 0.58,
+          "video_confidence": 0.16,
+          "video_quality": "LIMITED",
+          "audio_probability": 0.94,
+          "audio_confidence": 0.88,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.018,
+          "audio_weight": 0.982,
+          "fused_probability": 0.9335,
+          "fused_score": 93,
+          "risk_level": "HIGH"
+        },
+        {
+          "segment_id": 7,
+          "start_time": 3.5,
+          "end_time": 4.0,
+          "video_probability": 0.58,
+          "video_confidence": 0.16,
+          "video_quality": "LIMITED",
+          "audio_probability": 0.94,
+          "audio_confidence": 0.88,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.018,
+          "audio_weight": 0.982,
+          "fused_probability": 0.9335,
+          "fused_score": 93,
+          "risk_level": "HIGH"
+        },
+        {
+          "segment_id": 8,
+          "start_time": 4.0,
+          "end_time": 4.5,
+          "video_probability": null,
+          "video_confidence": 0.0,
+          "video_quality": "NO_INPUT",
+          "audio_probability": 0.94,
+          "audio_confidence": 0.88,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.0,
+          "audio_weight": 1.0,
+          "fused_probability": 0.94,
+          "fused_score": 94,
+          "risk_level": "HIGH"
+        }
+      ],
+      "disclaimer": "Zero Rabies-MMNet is a research prototype for non-invasive behavioral screening / risk assessment. Outputs represent operational behavioral agitation proxies and are NOT clinical rabies diagnoses."
+    }
+  },
+  {
+    "scenario": "SYNTH_04_ACOUSTIC_NOISE_CLEAR_MOTION",
+    "description": "Acoustic background noise / near-boundary audio, but clear visual running locomotion.",
+    "expected_outcome": "Dynamic fusion downweights ambiguous audio and trusts video -> HIGH risk level.",
+    "output": {
+      "fusion_method": "dynamic_confidence_late_fusion",
+      "clip_id": "SYNTH_04_ACOUSTIC_NOISE_CLEAR_MOTION",
+      "video": {
+        "probability": 0.82,
+        "score": 82,
+        "confidence": 0.64,
+        "quality": "GOOD"
+      },
+      "audio": {
+        "probability": 0.52,
+        "score": 52,
+        "confidence": 0.04
+      },
+      "weights": {
+        "video": 0.9644,
+        "audio": 0.0356
+      },
+      "fused": {
+        "risk_probability": 0.8093,
+        "risk_score": 81,
+        "risk_level": "HIGH"
+      },
+      "temporal": {
+        "start_time": 0.0,
+        "end_time": 4.0
+      },
+      "baselines": {
+        "video_only": {
+          "probability": 0.82,
+          "score": 82,
+          "confidence": 0.64,
+          "risk_level": "HIGH",
+          "quality": "GOOD"
+        },
+        "audio_only": {
+          "probability": 0.52,
+          "score": 52,
+          "confidence": 0.04,
+          "risk_level": "MEDIUM",
+          "quality": "PRESENT"
+        },
+        "dynamic_late_fusion": {
+          "risk_probability": 0.8093,
+          "risk_score": 81,
+          "risk_level": "HIGH",
+          "video_weight": 0.9644,
+          "audio_weight": 0.0356
+        }
+      },
+      "segments": [
+        {
+          "segment_id": 0,
+          "start_time": 0.0,
+          "end_time": 0.5,
+          "video_probability": 0.8,
+          "video_confidence": 0.6,
+          "video_quality": "GOOD",
+          "audio_probability": 0.51,
+          "audio_confidence": 0.02,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.9807,
+          "audio_weight": 0.0193,
+          "fused_probability": 0.7944,
+          "fused_score": 79,
+          "risk_level": "HIGH"
+        },
+        {
+          "segment_id": 1,
+          "start_time": 0.5,
+          "end_time": 1.0,
+          "video_probability": 0.8,
+          "video_confidence": 0.6,
+          "video_quality": "GOOD",
+          "audio_probability": 0.51,
+          "audio_confidence": 0.02,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.9807,
+          "audio_weight": 0.0193,
+          "fused_probability": 0.7944,
+          "fused_score": 79,
+          "risk_level": "HIGH"
+        },
+        {
+          "segment_id": 2,
+          "start_time": 1.0,
+          "end_time": 1.5,
+          "video_probability": 0.81,
+          "video_confidence": 0.62,
+          "video_quality": "GOOD",
+          "audio_probability": 0.51,
+          "audio_confidence": 0.02,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.9813,
+          "audio_weight": 0.0187,
+          "fused_probability": 0.8044,
+          "fused_score": 80,
+          "risk_level": "HIGH"
+        },
+        {
+          "segment_id": 3,
+          "start_time": 1.5,
+          "end_time": 2.0,
+          "video_probability": 0.81,
+          "video_confidence": 0.62,
+          "video_quality": "GOOD",
+          "audio_probability": 0.52,
+          "audio_confidence": 0.04,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.9633,
+          "audio_weight": 0.0367,
+          "fused_probability": 0.7994,
+          "fused_score": 80,
+          "risk_level": "HIGH"
+        },
+        {
+          "segment_id": 4,
+          "start_time": 2.0,
+          "end_time": 2.5,
+          "video_probability": 0.83,
+          "video_confidence": 0.66,
+          "video_quality": "GOOD",
+          "audio_probability": 0.52,
+          "audio_confidence": 0.04,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.9654,
+          "audio_weight": 0.0346,
+          "fused_probability": 0.8193,
+          "fused_score": 82,
+          "risk_level": "HIGH"
+        },
+        {
+          "segment_id": 5,
+          "start_time": 2.5,
+          "end_time": 3.0,
+          "video_probability": 0.83,
+          "video_confidence": 0.66,
+          "video_quality": "GOOD",
+          "audio_probability": 0.52,
+          "audio_confidence": 0.04,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.9654,
+          "audio_weight": 0.0346,
+          "fused_probability": 0.8193,
+          "fused_score": 82,
+          "risk_level": "HIGH"
+        },
+        {
+          "segment_id": 6,
+          "start_time": 3.0,
+          "end_time": 3.5,
+          "video_probability": 0.84,
+          "video_confidence": 0.68,
+          "video_quality": "GOOD",
+          "audio_probability": 0.53,
+          "audio_confidence": 0.06,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.9504,
+          "audio_weight": 0.0496,
+          "fused_probability": 0.8246,
+          "fused_score": 82,
+          "risk_level": "HIGH"
+        },
+        {
+          "segment_id": 7,
+          "start_time": 3.5,
+          "end_time": 4.0,
+          "video_probability": 0.84,
+          "video_confidence": 0.68,
+          "video_quality": "GOOD",
+          "audio_probability": 0.53,
+          "audio_confidence": 0.06,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.9504,
+          "audio_weight": 0.0496,
+          "fused_probability": 0.8246,
+          "fused_score": 82,
+          "risk_level": "HIGH"
+        }
+      ],
+      "disclaimer": "Zero Rabies-MMNet is a research prototype for non-invasive behavioral screening / risk assessment. Outputs represent operational behavioral agitation proxies and are NOT clinical rabies diagnoses."
+    }
+  },
+  {
+    "scenario": "SYNTH_05_TRANSITIONAL_BEHAVIOR",
+    "description": "Canine walking/trotting with low-level whining. Transitional arousal state.",
+    "expected_outcome": "Fused score reflects transitional behavioral dynamics -> MEDIUM risk level.",
+    "output": {
+      "fusion_method": "dynamic_confidence_late_fusion",
+      "clip_id": "SYNTH_05_TRANSITIONAL_BEHAVIOR",
+      "video": {
+        "probability": 0.45,
+        "score": 45,
+        "confidence": 0.1,
+        "quality": "FAIR"
+      },
+      "audio": {
+        "probability": 0.55,
+        "score": 55,
+        "confidence": 0.1
+      },
+      "weights": {
+        "video": 0.4146,
+        "audio": 0.5854
+      },
+      "fused": {
+        "risk_probability": 0.5085,
+        "risk_score": 51,
+        "risk_level": "MEDIUM"
+      },
+      "temporal": {
+        "start_time": 0.0,
+        "end_time": 4.0
+      },
+      "baselines": {
+        "video_only": {
+          "probability": 0.45,
+          "score": 45,
+          "confidence": 0.1,
+          "risk_level": "MEDIUM",
+          "quality": "FAIR"
+        },
+        "audio_only": {
+          "probability": 0.55,
+          "score": 55,
+          "confidence": 0.1,
+          "risk_level": "MEDIUM",
+          "quality": "PRESENT"
+        },
+        "dynamic_late_fusion": {
+          "risk_probability": 0.5085,
+          "risk_score": 51,
+          "risk_level": "MEDIUM",
+          "video_weight": 0.4146,
+          "audio_weight": 0.5854
+        }
+      },
+      "segments": [
+        {
+          "segment_id": 0,
+          "start_time": 0.0,
+          "end_time": 0.5,
+          "video_probability": 0.42,
+          "video_confidence": 0.16,
+          "video_quality": "FAIR",
+          "audio_probability": 0.54,
+          "audio_confidence": 0.08,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.5862,
+          "audio_weight": 0.4138,
+          "fused_probability": 0.4697,
+          "fused_score": 47,
+          "risk_level": "MEDIUM"
+        },
+        {
+          "segment_id": 1,
+          "start_time": 0.5,
+          "end_time": 1.0,
+          "video_probability": 0.42,
+          "video_confidence": 0.16,
+          "video_quality": "FAIR",
+          "audio_probability": 0.54,
+          "audio_confidence": 0.08,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.5862,
+          "audio_weight": 0.4138,
+          "fused_probability": 0.4697,
+          "fused_score": 47,
+          "risk_level": "MEDIUM"
+        },
+        {
+          "segment_id": 2,
+          "start_time": 1.0,
+          "end_time": 1.5,
+          "video_probability": 0.435,
+          "video_confidence": 0.13,
+          "video_quality": "FAIR",
+          "audio_probability": 0.54,
+          "audio_confidence": 0.08,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.5351,
+          "audio_weight": 0.4649,
+          "fused_probability": 0.4838,
+          "fused_score": 48,
+          "risk_level": "MEDIUM"
+        },
+        {
+          "segment_id": 3,
+          "start_time": 1.5,
+          "end_time": 2.0,
+          "video_probability": 0.435,
+          "video_confidence": 0.13,
+          "video_quality": "FAIR",
+          "audio_probability": 0.55,
+          "audio_confidence": 0.1,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.4794,
+          "audio_weight": 0.5206,
+          "fused_probability": 0.4949,
+          "fused_score": 49,
+          "risk_level": "MEDIUM"
+        },
+        {
+          "segment_id": 4,
+          "start_time": 2.0,
+          "end_time": 2.5,
+          "video_probability": 0.465,
+          "video_confidence": 0.07,
+          "video_quality": "FAIR",
+          "audio_probability": 0.55,
+          "audio_confidence": 0.1,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.3315,
+          "audio_weight": 0.6685,
+          "fused_probability": 0.5218,
+          "fused_score": 52,
+          "risk_level": "MEDIUM"
+        },
+        {
+          "segment_id": 5,
+          "start_time": 2.5,
+          "end_time": 3.0,
+          "video_probability": 0.465,
+          "video_confidence": 0.07,
+          "video_quality": "FAIR",
+          "audio_probability": 0.55,
+          "audio_confidence": 0.1,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.3315,
+          "audio_weight": 0.6685,
+          "fused_probability": 0.5218,
+          "fused_score": 52,
+          "risk_level": "MEDIUM"
+        },
+        {
+          "segment_id": 6,
+          "start_time": 3.0,
+          "end_time": 3.5,
+          "video_probability": 0.48,
+          "video_confidence": 0.04,
+          "video_quality": "FAIR",
+          "audio_probability": 0.56,
+          "audio_confidence": 0.12,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.191,
+          "audio_weight": 0.809,
+          "fused_probability": 0.5447,
+          "fused_score": 54,
+          "risk_level": "MEDIUM"
+        },
+        {
+          "segment_id": 7,
+          "start_time": 3.5,
+          "end_time": 4.0,
+          "video_probability": 0.48,
+          "video_confidence": 0.04,
+          "video_quality": "FAIR",
+          "audio_probability": 0.56,
+          "audio_confidence": 0.12,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.191,
+          "audio_weight": 0.809,
+          "fused_probability": 0.5447,
+          "fused_score": 54,
+          "risk_level": "MEDIUM"
+        }
+      ],
+      "disclaimer": "Zero Rabies-MMNet is a research prototype for non-invasive behavioral screening / risk assessment. Outputs represent operational behavioral agitation proxies and are NOT clinical rabies diagnoses."
+    }
+  },
+  {
+    "scenario": "SYNTH_06_DISCORDANT_EQUAL_CONFIDENCE",
+    "description": "Video indicates calm (0.25, conf 0.50), Audio indicates agitation (0.75, conf 0.50).",
+    "expected_outcome": "Equal weighting (Wv=0.5, Wa=0.5) balances predictions -> MEDIUM risk score (50).",
+    "output": {
+      "fusion_method": "dynamic_confidence_late_fusion",
+      "clip_id": "SYNTH_06_DISCORDANT_EQUAL_CONFIDENCE",
+      "video": {
+        "probability": 0.25,
+        "score": 25,
+        "confidence": 0.5,
+        "quality": "GOOD"
+      },
+      "audio": {
+        "probability": 0.75,
+        "score": 75,
+        "confidence": 0.5
+      },
+      "weights": {
+        "video": 0.4737,
+        "audio": 0.5263
+      },
+      "fused": {
+        "risk_probability": 0.5131,
+        "risk_score": 51,
+        "risk_level": "MEDIUM"
+      },
+      "temporal": {
+        "start_time": 0.0,
+        "end_time": 3.0
+      },
+      "baselines": {
+        "video_only": {
+          "probability": 0.25,
+          "score": 25,
+          "confidence": 0.5,
+          "risk_level": "LOW",
+          "quality": "GOOD"
+        },
+        "audio_only": {
+          "probability": 0.75,
+          "score": 75,
+          "confidence": 0.5,
+          "risk_level": "HIGH",
+          "quality": "PRESENT"
+        },
+        "dynamic_late_fusion": {
+          "risk_probability": 0.5131,
+          "risk_score": 51,
+          "risk_level": "MEDIUM",
+          "video_weight": 0.4737,
+          "audio_weight": 0.5263
+        }
+      },
+      "segments": [
+        {
+          "segment_id": 0,
+          "start_time": 0.0,
+          "end_time": 0.5,
+          "video_probability": 0.25,
+          "video_confidence": 0.5,
+          "video_quality": "GOOD",
+          "audio_probability": 0.75,
+          "audio_confidence": 0.5,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.4737,
+          "audio_weight": 0.5263,
+          "fused_probability": 0.5131,
+          "fused_score": 51,
+          "risk_level": "MEDIUM"
+        },
+        {
+          "segment_id": 1,
+          "start_time": 0.5,
+          "end_time": 1.0,
+          "video_probability": 0.25,
+          "video_confidence": 0.5,
+          "video_quality": "GOOD",
+          "audio_probability": 0.75,
+          "audio_confidence": 0.5,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.4737,
+          "audio_weight": 0.5263,
+          "fused_probability": 0.5131,
+          "fused_score": 51,
+          "risk_level": "MEDIUM"
+        },
+        {
+          "segment_id": 2,
+          "start_time": 1.0,
+          "end_time": 1.5,
+          "video_probability": 0.25,
+          "video_confidence": 0.5,
+          "video_quality": "GOOD",
+          "audio_probability": 0.75,
+          "audio_confidence": 0.5,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.4737,
+          "audio_weight": 0.5263,
+          "fused_probability": 0.5131,
+          "fused_score": 51,
+          "risk_level": "MEDIUM"
+        },
+        {
+          "segment_id": 3,
+          "start_time": 1.5,
+          "end_time": 2.0,
+          "video_probability": 0.25,
+          "video_confidence": 0.5,
+          "video_quality": "GOOD",
+          "audio_probability": 0.75,
+          "audio_confidence": 0.5,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.4737,
+          "audio_weight": 0.5263,
+          "fused_probability": 0.5131,
+          "fused_score": 51,
+          "risk_level": "MEDIUM"
+        },
+        {
+          "segment_id": 4,
+          "start_time": 2.0,
+          "end_time": 2.5,
+          "video_probability": 0.25,
+          "video_confidence": 0.5,
+          "video_quality": "GOOD",
+          "audio_probability": 0.75,
+          "audio_confidence": 0.5,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.4737,
+          "audio_weight": 0.5263,
+          "fused_probability": 0.5131,
+          "fused_score": 51,
+          "risk_level": "MEDIUM"
+        },
+        {
+          "segment_id": 5,
+          "start_time": 2.5,
+          "end_time": 3.0,
+          "video_probability": 0.25,
+          "video_confidence": 0.5,
+          "video_quality": "GOOD",
+          "audio_probability": 0.75,
+          "audio_confidence": 0.5,
+          "audio_quality": "PRESENT",
+          "video_weight": 0.4737,
+          "audio_weight": 0.5263,
+          "fused_probability": 0.5131,
+          "fused_score": 51,
+          "risk_level": "MEDIUM"
+        }
+      ],
+      "disclaimer": "Zero Rabies-MMNet is a research prototype for non-invasive behavioral screening / risk assessment. Outputs represent operational behavioral agitation proxies and are NOT clinical rabies diagnoses."
+    }
+  }
+]

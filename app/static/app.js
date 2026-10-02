@@ -1,543 +1,530 @@
 /**
- * Zero Rabies-MMNet — Video V2 Web Application Client Logic.
+ * Zero Rabies-MMNet — Multimodal Behavioral Screening Frontend Client.
+ *
+ * Single-Video Input Workflow:
+ * User uploads one canine video.
+ * Embedded audio is inspected and automatically extracted on backend.
+ * Dynamic Confidence-Aware Late Fusion runs Video V2 + Audio V2.
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Elements
-  const dropzone = document.getElementById("video-dropzone");
-  const fileInput = document.getElementById("video-input");
-  const filePreview = document.getElementById("file-preview-card");
-  const fileNameDisplay = document.getElementById("selected-file-name");
-  const fileSizeDisplay = document.getElementById("selected-file-size");
-  const btnClearFile = document.getElementById("btn-clear-file");
-  const btnAnalyze = document.getElementById("btn-analyze");
-  const demoButtons = document.querySelectorAll(".demo-buttons button");
+  // Elements: Input
+  const videoInput = document.getElementById("video-input");
+  const videoDropzone = document.getElementById("video-dropzone");
+  const mediaInspectionCard = document.getElementById("media-inspection-card");
+  const inspectStatusBadge = document.getElementById("inspection-status-badge");
+  const inspectVideoName = document.getElementById("inspect-video-name");
+  const inspectFileSize = document.getElementById("inspect-file-size");
+  const inspectDuration = document.getElementById("inspect-duration");
+  const inspectAudioTrack = document.getElementById("inspect-audio-track");
+  const inspectAudioProc = document.getElementById("inspect-audio-proc");
+  const inspectStatusMsg = document.getElementById("inspect-status-msg");
 
-  const uploadSection = document.getElementById("upload-section");
+  const btnAnalyze = document.getElementById("btn-analyze");
+  const btnReset = document.getElementById("btn-reset");
+
+  // Progress & Error
   const progressCard = document.getElementById("progress-card");
+  const progressBarFill = document.getElementById("progress-bar-fill");
+  const progressStageTitle = document.getElementById("progress-stage-title");
+  const progressStageDesc = document.getElementById("progress-stage-desc");
   const errorCard = document.getElementById("error-card");
   const errorTitle = document.getElementById("error-title");
   const errorMessage = document.getElementById("error-message");
   const btnDismissError = document.getElementById("btn-dismiss-error");
 
+  // Results Section
   const resultsSection = document.getElementById("results-section");
-  const warningBanner = document.getElementById("warning-banner");
-  const warningText = document.getElementById("warning-text");
+  const scenarioBanner = document.getElementById("scenario-banner");
+  const scenarioDescText = document.getElementById("scenario-desc-text");
 
-  // Result fields
-  const resBehavior = document.getElementById("res-behavior");
-  const resScoreNum = document.getElementById("res-score-num");
-  const resProb = document.getElementById("res-prob");
-  const resBandDetail = document.getElementById("res-band-detail");
-  const resScoreBand = document.getElementById("res-score-band");
-  const resInterpretation = document.getElementById("res-interpretation");
-  const meterFill = document.getElementById("meter-fill");
-  const resultCard = document.querySelector(".result-card");
+  // Input Summary Banner
+  const sumVideoFile = document.getElementById("sum-video-file");
+  const sumVideoDuration = document.getElementById("sum-video-duration");
+  const sumAudioDetected = document.getElementById("sum-audio-detected");
+  const sumAudioProcessing = document.getElementById("sum-audio-processing");
+  const sumPipelineBadge = document.getElementById("sum-pipeline-badge");
+  const sumNoteText = document.getElementById("sum-note-text");
 
-  // Quality fields
-  const resQualityBadge = document.getElementById("res-quality-badge");
-  const resValidPct = document.getElementById("res-valid-pct");
-  const resValidCount = document.getElementById("res-valid-count");
-  const resPoseConf = document.getElementById("res-pose-conf");
-  const resAmbLevel = document.getElementById("res-amb-level");
-  const resAmbPct = document.getElementById("res-amb-pct");
-  const resNumWindows = document.getElementById("res-num-windows");
-  const resPaddedInfo = document.getElementById("res-padded-info");
-  const resQualityNote = document.getElementById("res-quality-note");
+  // Modality Cards
+  const resVideoScore = document.getElementById("res-video-score");
+  const resVideoProb = document.getElementById("res-video-prob");
+  const resVideoConf = document.getElementById("res-video-conf");
+  const resVideoRel = document.getElementById("res-video-rel");
+  const videoQualityTag = document.getElementById("video-quality-tag");
 
-  // Video Preview players
-  const playerAnnotated = document.getElementById("player-annotated");
-  const playerOriginal = document.getElementById("player-original");
-  const tabAnnotated = document.getElementById("tab-annotated");
-  const tabFrames = document.getElementById("tab-frames");
-  const tabOriginal = document.getElementById("tab-original");
+  const resAudioScore = document.getElementById("res-audio-score");
+  const resAudioProb = document.getElementById("res-audio-prob");
+  const resAudioConf = document.getElementById("res-audio-conf");
+  const resAudioRel = document.getElementById("res-audio-rel");
+  const resAudioOrigin = document.getElementById("res-audio-origin");
+  const audioPresenceTag = document.getElementById("audio-presence-tag");
 
-  // Frame Inspector elements
-  const frameInspectorView = document.getElementById("frame-inspector-view");
-  const frameImgDisplay = document.getElementById("frame-img-display");
-  const frameSlider = document.getElementById("frame-slider");
-  const frameCounterLabel = document.getElementById("frame-counter-label");
-  const frameTsLabel = document.getElementById("frame-ts-label");
-  const btnPlayFrames = document.getElementById("btn-play-frames");
-  const btnPrevFrame = document.getElementById("btn-prev-frame");
-  const btnNextFrame = document.getElementById("btn-next-frame");
+  const resWeightVideo = document.getElementById("res-weight-video");
+  const resWeightAudio = document.getElementById("res-weight-audio");
+  const resFusedScore = document.getElementById("res-fused-score");
+  const resFusedProb = document.getElementById("res-fused-prob");
+  const resRiskLevelBadge = document.getElementById("res-risk-level-badge");
+  const resRiskBandTitle = document.getElementById("res-risk-band-title");
+  const riskMeterFill = document.getElementById("risk-meter-fill");
 
-  let previewFramesList = [];
-  let currentFrameIdx = 0;
-  let framePlayInterval = null;
+  // Quality Assessment Card
+  const qValidFrames = document.getElementById("q-valid-frames");
+  const qMeanPoseConf = document.getElementById("q-mean-pose-conf");
+  const qAmbiguityLevel = document.getElementById("q-ambiguity-level");
+  const qAmbiguousPct = document.getElementById("q-ambiguous-pct");
+  const qAudioStatus = document.getElementById("q-audio-status");
+  const qAudioCodec = document.getElementById("q-audio-codec");
+  const qAudioEnergy = document.getElementById("q-audio-energy");
+  const qAudioReliability = document.getElementById("q-audio-reliability");
+  const qNoteText = document.getElementById("q-note-text");
 
-  // Technical details
-  const toggleTechDetails = document.getElementById("toggle-tech-details");
-  const techDetailsContent = document.getElementById("tech-details-content");
-  const tArch = document.getElementById("t-arch");
-  const tParams = document.getElementById("t-params");
-  const tPose = document.getElementById("t-pose");
-  const tFps = document.getElementById("t-fps");
-  const tWindow = document.getElementById("t-window");
-  const tFeatures = document.getElementById("t-features");
-  const tTracking = document.getElementById("t-tracking");
-  const tCkpt = document.getElementById("t-ckpt");
-  const tDevice = document.getElementById("t-device");
-  const windowChips = document.getElementById("window-probabilities-chips");
-  const btnDownloadJson = document.getElementById("btn-download-json");
-  const btnViewManifest = document.getElementById("btn-view-manifest");
-  const btnAnalyzeAnother = document.getElementById("btn-analyze-another");
+  // Baselines
+  const baseVScore = document.getElementById("base-v-score");
+  const baseVConf = document.getElementById("base-v-conf");
+  const baseVBand = document.getElementById("base-v-band");
 
-  // Modal
-  const manifestModal = document.getElementById("manifest-modal");
-  const btnCloseModal = document.getElementById("btn-close-modal");
-  const manifestPre = document.getElementById("manifest-pre");
+  const baseAScore = document.getElementById("base-a-score");
+  const baseAConf = document.getElementById("base-a-conf");
+  const baseABand = document.getElementById("base-a-band");
+
+  const baseFusedScore = document.getElementById("base-fused-score");
+  const baseFusedWeights = document.getElementById("base-fused-weights");
+  const baseFusedBand = document.getElementById("base-fused-band");
+
+  // Details
+  const btnToggleDetails = document.getElementById("btn-toggle-details");
+  const detailsChevron = document.getElementById("details-chevron");
+  const fusionDetailsContent = document.getElementById("fusion-details-content");
+  const segmentsTableBody = document.getElementById("segments-table-body");
+
+  // Video preview
+  const videoPreviewCard = document.getElementById("video-preview-card");
+  const annotatedPlayer = document.getElementById("annotated-player");
+
+  // Demo Buttons
+  const demoButtons = document.querySelectorAll(".btn-pill[data-scenario]");
 
   // State
-  let selectedFile = null;
-  let selectedDemoClip = null;
-  let lastInferenceResult = null;
-  let progressInterval = null;
+  let selectedVideoFile = null;
 
-  // Initialize server status on load
-  fetchStatus();
+  // File Selection: Video
+  videoDropzone.addEventListener("click", () => videoInput.click());
+  videoInput.addEventListener("change", (e) => {
+    if (e.target.files && e.target.files[0]) {
+      handleVideoSelected(e.target.files[0]);
+    }
+  });
 
-  function fetchStatus() {
-    fetch("/api/status")
-      .then(res => res.json())
-      .then(data => {
-        if (data.device) {
-          const deviceBadge = document.getElementById("badge-device");
-          if (deviceBadge) deviceBadge.textContent = `Device: ${data.device.toUpperCase()}`;
-        }
-      })
-      .catch(err => console.warn("Status ping warning:", err));
+  // Drag and Drop
+  setupDragDrop(videoDropzone, (file) => handleVideoSelected(file));
+
+  function setupDragDrop(el, onFileDrop) {
+    ["dragenter", "dragover"].forEach((evt) => {
+      el.addEventListener(evt, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        el.classList.add("dragover");
+      });
+    });
+    ["dragleave", "drop"].forEach((evt) => {
+      el.addEventListener(evt, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        el.classList.remove("dragover");
+      });
+    });
+    el.addEventListener("drop", (e) => {
+      if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) {
+        onFileDrop(e.dataTransfer.files[0]);
+      }
+    });
   }
 
-  // Drag and Drop Events
-  ["dragenter", "dragover"].forEach(name => {
-    dropzone.addEventListener(name, (e) => {
-      e.preventDefault();
-      dropzone.classList.add("dragover");
-    });
-  });
-
-  ["dragleave", "drop"].forEach(name => {
-    dropzone.addEventListener(name, (e) => {
-      e.preventDefault();
-      dropzone.classList.remove("dragover");
-    });
-  });
-
-  dropzone.addEventListener("drop", (e) => {
-    const files = e.dataTransfer.files;
-    if (files.length > 0) {
-      handleFileSelected(files[0]);
-    }
-  });
-
-  dropzone.addEventListener("click", () => {
-    fileInput.click();
-  });
-
-  fileInput.addEventListener("change", (e) => {
-    if (e.target.files.length > 0) {
-      handleFileSelected(e.target.files[0]);
-    }
-  });
-
-  function handleFileSelected(file) {
-    selectedFile = file;
-    selectedDemoClip = null;
-
-    // Reset demo button selection styles
-    demoButtons.forEach(btn => btn.classList.remove("active"));
-
-    fileNameDisplay.textContent = file.name;
-    const mbSize = (file.size / (1024 * 1024)).toFixed(2);
-    fileSizeDisplay.textContent = `${mbSize} MB`;
-
-    dropzone.classList.add("hidden");
-    filePreview.classList.remove("hidden");
+  async function handleVideoSelected(file) {
+    selectedVideoFile = file;
     btnAnalyze.disabled = false;
-    hideError();
+
+    // Show initial metadata while probing stream
+    mediaInspectionCard.classList.remove("hidden");
+    inspectStatusBadge.textContent = "Probing Streams...";
+    inspectStatusBadge.className = "inspection-badge";
+    inspectVideoName.textContent = file.name;
+    inspectFileSize.textContent = `${(file.size / (1024 * 1024)).toFixed(2)} MB`;
+    inspectDuration.textContent = "Measuring...";
+    inspectAudioTrack.textContent = "Checking...";
+    inspectAudioProc.textContent = "16 kHz mono (auto-extract)";
+    inspectStatusMsg.textContent = "Inspecting media container...";
+
+    // Probe media stream on backend via FFmpeg
+    try {
+      const probeData = new FormData();
+      probeData.append("video", file);
+
+      const resp = await fetch("/api/probe_video", {
+        method: "POST",
+        body: probeData,
+      });
+
+      if (resp.ok) {
+        const info = await resp.json();
+        inspectStatusBadge.textContent = "Stream Verified";
+        inspectDuration.textContent = info.duration_seconds ? `${info.duration_seconds}s` : "Container parsed";
+        inspectAudioTrack.textContent = info.has_audio ? `Detected (${info.audio_codec || "audio"})` : "Not detected";
+        inspectAudioProc.textContent = info.audio_processing;
+        inspectStatusMsg.textContent = info.status;
+      } else {
+        inspectStatusBadge.textContent = "Ready";
+        inspectAudioTrack.textContent = "Will inspect during execution";
+        inspectStatusMsg.textContent = "Ready for screening";
+      }
+    } catch (err) {
+      inspectStatusBadge.textContent = "Ready";
+      inspectAudioTrack.textContent = "Auto-extract";
+      inspectStatusMsg.textContent = "Ready for screening";
+    }
   }
 
-  btnClearFile.addEventListener("click", () => {
-    resetSelection();
+  // Reset Button
+  btnReset.addEventListener("click", resetAll);
+
+  function resetAll() {
+    selectedVideoFile = null;
+    videoInput.value = "";
+    mediaInspectionCard.classList.add("hidden");
+    btnAnalyze.disabled = true;
+    progressCard.classList.add("hidden");
+    errorCard.classList.add("hidden");
+    resultsSection.classList.add("hidden");
+    scenarioBanner.classList.add("hidden");
+  }
+
+  // Dismiss Error
+  btnDismissError.addEventListener("click", () => {
+    errorCard.classList.add("hidden");
   });
 
-  function resetSelection() {
-    selectedFile = null;
-    selectedDemoClip = null;
-    fileInput.value = "";
-    filePreview.classList.add("hidden");
-    dropzone.classList.remove("hidden");
-    demoButtons.forEach(btn => btn.classList.remove("active"));
-    btnAnalyze.disabled = true;
-  }
+  // Toggle Details
+  btnToggleDetails.addEventListener("click", () => {
+    const isHidden = fusionDetailsContent.classList.contains("hidden");
+    if (isHidden) {
+      fusionDetailsContent.classList.remove("hidden");
+      detailsChevron.classList.add("expanded");
+    } else {
+      fusionDetailsContent.classList.add("hidden");
+      detailsChevron.classList.remove("expanded");
+    }
+  });
 
-  // Quick Demo Clips
-  demoButtons.forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      const clipId = btn.getAttribute("data-clip");
-      selectedDemoClip = clipId;
-      selectedFile = null;
-
-      demoButtons.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-
-      // Update file preview card for demo
-      fileNameDisplay.textContent = `Demo Clip: ${clipId}.mp4`;
-      fileSizeDisplay.textContent = "Validated Development Clip";
-      dropzone.classList.add("hidden");
-      filePreview.classList.remove("hidden");
-      btnAnalyze.disabled = false;
-      hideError();
+  // Demo Buttons (Synthetic Validation Scenarios)
+  demoButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const scenarioId = btn.getAttribute("data-scenario");
+      executeDemoScenario(scenarioId);
     });
   });
 
-  // Analyze Action
-  btnAnalyze.addEventListener("click", () => {
-    if (!selectedFile && !selectedDemoClip) return;
-    startInference();
-  });
-
-  function startInference() {
+  async function executeDemoScenario(scenarioId) {
     hideError();
-    uploadSection.classList.add("hidden");
     resultsSection.classList.add("hidden");
     progressCard.classList.remove("hidden");
+    simulateProgressSteps();
 
-    startSimulatedProgress();
-
-    if (selectedDemoClip) {
-      // Analyze demo
-      fetch("/api/analyze_demo", {
+    try {
+      const resp = await fetch("/api/analyze_multimodal_demo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ clip_id: selectedDemoClip })
-      })
-        .then(handleApiResponse)
-        .catch(handleApiError);
-    } else {
-      // Analyze uploaded file
-      const formData = new FormData();
-      formData.append("video", selectedFile);
+        body: JSON.stringify({ scenario_id: scenarioId }),
+      });
 
-      fetch("/api/analyze", {
+      if (!resp.ok) {
+        const err = await resp.json().catch(() => ({ error: "Server Error" }));
+        throw new Error(err.error || `HTTP ${resp.status}`);
+      }
+
+      const data = await resp.json();
+      finishProgress();
+      renderMultimodalResults(data);
+    } catch (err) {
+      progressCard.classList.add("hidden");
+      showError("Demo Scenario Execution Error", err.message);
+    }
+  }
+
+  // Analyze Action (Single Canine Video Upload)
+  btnAnalyze.addEventListener("click", async () => {
+    if (!selectedVideoFile) return;
+
+    hideError();
+    resultsSection.classList.add("hidden");
+    progressCard.classList.remove("hidden");
+    simulateProgressSteps();
+
+    const formData = new FormData();
+    formData.append("video", selectedVideoFile);
+
+    try {
+      const resp = await fetch("/api/analyze", {
         method: "POST",
-        body: formData
-      })
-        .then(handleApiResponse)
-        .catch(handleApiError);
-    }
-  }
+        body: formData,
+      });
 
-  function handleApiResponse(response) {
-    return response.json().then(data => {
-      if (!response.ok) {
-        throw new Error(data.error || `Server returned error (${response.status})`);
+      if (!resp.ok) {
+        const err = await resp.json().catch(() => ({ error: "Pipeline Error" }));
+        throw new Error(err.error || `HTTP ${resp.status}`);
       }
-      stopProgress();
-      displayResults(data);
-    });
-  }
 
-  function handleApiError(err) {
-    stopProgress();
-    progressCard.classList.add("hidden");
-    uploadSection.classList.remove("hidden");
-    showError("Inference Failed", err.message || "An unexpected error occurred during video processing.");
-  }
-
-  function startSimulatedProgress() {
-    const steps = [
-      { id: "step-1", fill: "20%", title: "Validating Video...", desc: "Checking format and decoding container" },
-      { id: "step-2", fill: "40%", title: "Extracting Frames at 8.0 FPS...", desc: "Uniform temporal sampling" },
-      { id: "step-3", fill: "60%", title: "Detecting Canine Pose...", desc: "YOLO11n-Pose 24 keypoint inference" },
-      { id: "step-4", fill: "80%", title: "Tracking Canine Identity...", desc: "Temporal continuity and normalization" },
-      { id: "step-5", fill: "95%", title: "Evaluating Mamba S6 Dynamics...", desc: "Scoring 16-frame temporal windows" },
-    ];
-
-    let current = 0;
-    const fillEl = document.getElementById("progress-bar-fill");
-    const titleEl = document.getElementById("progress-stage-title");
-    const descEl = document.getElementById("progress-stage-desc");
-
-    // Reset steps
-    for (let i = 1; i <= 5; i++) {
-      const el = document.getElementById(`step-${i}`);
-      if (el) el.className = "step-item";
+      const data = await resp.json();
+      finishProgress();
+      renderMultimodalResults(data);
+    } catch (err) {
+      progressCard.classList.add("hidden");
+      showError("Inference Execution Failed", err.message);
     }
+  });
 
-    function advance() {
-      if (current < steps.length) {
-        const s = steps[current];
-        fillEl.style.width = s.fill;
-        titleEl.textContent = s.title;
-        descEl.textContent = s.desc;
-
-        for (let i = 0; i < current; i++) {
-          const prev = document.getElementById(steps[i].id);
-          if (prev) prev.className = "step-item completed";
-        }
-        const active = document.getElementById(s.id);
-        if (active) active.className = "step-item active";
-
-        current++;
-      }
-    }
-
-    advance();
-    progressInterval = setInterval(advance, 800);
-  }
-
-  function stopProgress() {
-    if (progressInterval) {
-      clearInterval(progressInterval);
-      progressInterval = null;
-    }
-  }
-
-  function displayResults(data) {
-    lastInferenceResult = data;
+  function renderMultimodalResults(data) {
     progressCard.classList.add("hidden");
     resultsSection.classList.remove("hidden");
 
-    // Behavioral state & score
-    const isAgitated = data.behavior === "AGITATED";
-    resBehavior.textContent = data.behavior;
-    resScoreNum.textContent = data.behavioral_score;
-    resProb.textContent = `${Math.round(data.probability_agitated * 100)}%`;
-    resBandDetail.textContent = data.score_band;
-    resScoreBand.textContent = data.score_band;
-    resInterpretation.textContent = data.interpretation;
-
-    // Styling according to state
-    resultCard.classList.remove("state-calm", "state-agitated");
-    if (isAgitated) {
-      resultCard.classList.add("state-agitated");
+    // Scenario banner if demo
+    if (data.scenario_description) {
+      scenarioBanner.classList.remove("hidden");
+      scenarioDescText.textContent = `${data.scenario_description} — Expected: ${data.expected_outcome || ""}`;
     } else {
-      resultCard.classList.add("state-calm");
+      scenarioBanner.classList.add("hidden");
     }
 
-    // Meter bar fill
-    meterFill.style.width = `${Math.max(3, Math.min(100, data.behavioral_score))}%`;
+    // Input provenance summary
+    const inp = data.input_summary || {};
+    sumVideoFile.textContent = inp.video_filename || (selectedVideoFile ? selectedVideoFile.name : "Canine Video");
+    sumVideoDuration.textContent = inp.video_duration_seconds ? `${inp.video_duration_seconds}s` : "--";
+    sumAudioDetected.textContent = inp.embedded_audio_detected ? "Detected" : "Not Detected";
+    sumAudioProcessing.textContent = inp.embedded_audio_detected ? "16 kHz mono (Extracted)" : "None (Video-Only)";
+    sumPipelineBadge.textContent = inp.screening_pipeline || "Multimodal Screening";
+    sumNoteText.textContent = inp.audio_extraction_note || "Multimodal screening complete.";
 
-    // Quality indicators
-    const q = data.quality;
-    resQualityBadge.textContent = q.overall;
-    resQualityBadge.className = `badge-quality ${q.overall}`;
-    resValidPct.textContent = `${q.valid_frame_percentage}%`;
-    resValidCount.textContent = `${data.video.valid_pose_frames} of ${data.video.sampled_frames} frames`;
-    resPoseConf.textContent = q.mean_pose_confidence.toFixed(2);
-    resAmbLevel.textContent = q.ambiguity_level;
-    resAmbPct.textContent = `${q.ambiguous_frame_percentage}% ambiguous`;
-    resNumWindows.textContent = data.temporal.num_windows;
-    resPaddedInfo.textContent = `${data.temporal.padded_windows} padded windows`;
-    resQualityNote.textContent = q.quality_note;
-
-    // Warning Banner
-    if (data.warning) {
-      warningText.textContent = data.warning;
-      warningBanner.classList.remove("hidden");
+    // 1. Video Branch
+    const v = data.video || {};
+    const vq = data.video_quality_info || {};
+    if (v.score !== null && v.score !== undefined) {
+      resVideoScore.textContent = v.score;
+      resVideoProb.textContent = `${Math.round((v.probability || 0) * 100)}%`;
+      resVideoConf.textContent = `${Math.round((v.confidence || 0) * 100)}%`;
+      const vRel = (data.baselines && data.baselines.video_only && data.baselines.video_only.confidence !== undefined)
+        ? data.baselines.video_only.confidence
+        : v.confidence;
+      resVideoRel.textContent = typeof vRel === "number" ? vRel.toFixed(2) : "--";
+      videoQualityTag.textContent = v.quality || "GOOD";
+      videoQualityTag.className = `quality-badge ${(v.quality || "good").toLowerCase()}`;
     } else {
-      warningBanner.classList.add("hidden");
+      resVideoScore.textContent = "N/A";
+      resVideoProb.textContent = "N/A";
+      resVideoConf.textContent = "0%";
+      resVideoRel.textContent = "0.00";
+      videoQualityTag.textContent = "NO INPUT";
+      videoQualityTag.className = "quality-badge limited";
     }
 
-    // Video & Frame Previews
+    // 2. Audio Branch
+    const a = data.audio || {};
+    const aq = data.audio_quality_info || {};
+    const hasAudioTrack = inp.embedded_audio_detected;
+
+    if (a.score !== null && a.score !== undefined) {
+      resAudioScore.textContent = a.score;
+      resAudioProb.textContent = `${Math.round((a.probability || 0) * 100)}%`;
+      resAudioConf.textContent = `${Math.round((a.confidence || 0) * 100)}%`;
+      resAudioRel.textContent = aq.reliability !== undefined ? aq.reliability.toFixed(2) : "--";
+      resAudioOrigin.textContent = "Embedded in Video";
+      audioPresenceTag.textContent = "DETECTED";
+      audioPresenceTag.className = "quality-badge";
+    } else if (hasAudioTrack && aq.audio_present === false) {
+      resAudioScore.textContent = "Silent";
+      resAudioProb.textContent = "N/A";
+      resAudioConf.textContent = "0%";
+      resAudioRel.textContent = "0.00";
+      resAudioOrigin.textContent = "Embedded (< -50 dBFS)";
+      audioPresenceTag.textContent = "SILENT";
+      audioPresenceTag.className = "quality-badge silent";
+    } else {
+      resAudioScore.textContent = "No Audio";
+      resAudioProb.textContent = "N/A";
+      resAudioConf.textContent = "0%";
+      resAudioRel.textContent = "0.00";
+      resAudioOrigin.textContent = "No Audio Track";
+      audioPresenceTag.textContent = "NOT DETECTED";
+      audioPresenceTag.className = "quality-badge limited";
+    }
+
+    // 3. Dynamic Late Fusion
+    const w = data.weights || {};
+    const f = data.fused || {};
+
+    const wv = typeof w.video === "number" ? w.video : 1.0;
+    const wa = typeof w.audio === "number" ? w.audio : 0.0;
+    resWeightVideo.textContent = wv.toFixed(2);
+    resWeightAudio.textContent = wa.toFixed(2);
+
+    const fusedScore = f.risk_score !== undefined ? f.risk_score : 50;
+    resFusedScore.textContent = fusedScore;
+    const fusedProb = f.risk_probability !== undefined ? `${Math.round(f.risk_probability * 100)}%` : "--%";
+    resFusedProb.textContent = fusedProb;
+
+    const riskLevel = f.risk_level || "LOW";
+    resRiskLevelBadge.textContent = riskLevel;
+    resRiskLevelBadge.className = `risk-badge ${riskLevel.toLowerCase()}`;
+
+    // Risk band title & meter
+    let bandTitle = "Low Agitation / Calm-like";
+    if (riskLevel === "MEDIUM") {
+      bandTitle = "Moderate Activity / Transitional";
+    } else if (riskLevel === "HIGH") {
+      bandTitle = "High Agitation";
+    }
+    resRiskBandTitle.textContent = bandTitle;
+    riskMeterFill.style.width = `${fusedScore}%`;
+
+    // 4. Quality Assessment Card
+    if (vq.valid_frame_percentage !== undefined) {
+      qValidFrames.textContent = `${vq.valid_frame_percentage}%`;
+      qMeanPoseConf.textContent = `Mean Pose Conf: ${(vq.mean_pose_confidence * 100).toFixed(1)}%`;
+      qAmbiguityLevel.textContent = vq.ambiguity_level || "LOW";
+      qAmbiguousPct.textContent = `Ambiguous: ${vq.ambiguous_frame_percentage || 0}%`;
+    }
+    qAudioStatus.textContent = inp.embedded_audio_detected ? "Detected" : "Not Detected";
+    qAudioCodec.textContent = inp.audio_codec ? `Codec: ${inp.audio_codec}` : "Codec: N/A";
+    qAudioEnergy.textContent = aq.energy_db !== null && aq.energy_db !== undefined ? `${aq.energy_db} dBFS` : "-- dBFS";
+    qAudioReliability.textContent = `Reliability: ${aq.reliability !== undefined ? aq.reliability.toFixed(2) : "0.00"}`;
+    qNoteText.textContent = vq.quality_note || inp.audio_extraction_note || "";
+
+    // 5. Baseline Comparisons
+    const b = data.baselines || {};
+    const bv = b.video_only || {};
+    const ba = b.audio_only || {};
+    const bf = b.dynamic_late_fusion || {};
+
+    baseVScore.textContent = bv.score !== null && bv.score !== undefined ? `${bv.score} / 100` : "N/A";
+    baseVConf.textContent = bv.confidence !== undefined ? `${Math.round(bv.confidence * 100)}%` : "--";
+    baseVBand.textContent = bv.risk_level || "N/A";
+
+    baseAScore.textContent = ba.score !== null && ba.score !== undefined ? `${ba.score} / 100` : "N/A (No Audio)";
+    baseAConf.textContent = ba.confidence !== undefined ? `${Math.round(ba.confidence * 100)}%` : "--";
+    baseABand.textContent = ba.risk_level || "N/A";
+
+    baseFusedScore.textContent = `${bf.risk_score || fusedScore} / 100`;
+    baseFusedWeights.textContent = `Wv: ${wv.toFixed(2)} | Wa: ${wa.toFixed(2)}`;
+    baseFusedBand.textContent = bf.risk_level || riskLevel;
+
+    // 6. Populate Expandable Temporal Fusion Table
+    segmentsTableBody.innerHTML = "";
+    const segments = data.segments || [];
+    segments.forEach((seg) => {
+      const tr = document.createElement("tr");
+
+      const tInt = `[${seg.start_time.toFixed(1)}s - ${seg.end_time.toFixed(1)}s]`;
+      const vp = seg.video_probability !== null ? seg.video_probability.toFixed(2) : "-";
+      const vc = `${Math.round(seg.video_confidence * 100)}%`;
+      const vqBadge = seg.video_quality || "-";
+
+      const ap = seg.audio_probability !== null ? seg.audio_probability.toFixed(2) : "-";
+      const ac = `${Math.round(seg.audio_confidence * 100)}%`;
+      const aqBadge = seg.audio_quality || "-";
+
+      const segWv = seg.video_weight !== undefined ? seg.video_weight.toFixed(2) : "-";
+      const segWa = seg.audio_weight !== undefined ? seg.audio_weight.toFixed(2) : "-";
+      const fs = seg.fused_score !== null ? seg.fused_score : "-";
+      const rl = seg.risk_level || "-";
+
+      tr.innerHTML = `
+        <td>${tInt}</td>
+        <td>${vp}</td>
+        <td>${vc}</td>
+        <td><span class="quality-badge ${vqBadge.toLowerCase()}">${vqBadge}</span></td>
+        <td>${ap}</td>
+        <td>${ac}</td>
+        <td><span class="quality-badge ${aqBadge.toLowerCase()}">${aqBadge}</span></td>
+        <td>${segWv}</td>
+        <td>${segWa}</td>
+        <td><strong>${fs}</strong></td>
+        <td><span class="risk-badge ${rl.toLowerCase()}">${rl}</span></td>
+      `;
+      segmentsTableBody.appendChild(tr);
+    });
+
+    // 7. Video player preview if present
     if (data.annotated_video_url) {
-      playerAnnotated.src = data.annotated_video_url;
-      playerAnnotated.load();
-      playerAnnotated.play().catch(e => console.log("Autoplay prevented:", e));
-    }
-    if (data.original_video_url) {
-      playerOriginal.src = data.original_video_url;
-      playerOriginal.load();
-    }
-
-    // Initialize Frame-by-Frame Inspector if preview frames are returned
-    previewFramesList = data.preview_frames || [];
-    if (previewFramesList.length > 0) {
-      frameSlider.min = 0;
-      frameSlider.max = previewFramesList.length - 1;
-      frameSlider.value = 0;
-      setFrame(0);
-      tabFrames.classList.remove("hidden");
+      videoPreviewCard.classList.remove("hidden");
+      annotatedPlayer.src = data.annotated_video_url;
+      annotatedPlayer.load();
     } else {
-      tabFrames.classList.add("hidden");
-    }
-    showTab("annotated");
-
-    // Technical details
-    tArch.textContent = `${data.model.architecture} (2 layers, d_model=64, d_state=16)`;
-    tParams.textContent = data.model.trainable_parameters.toLocaleString();
-    tPose.textContent = `${data.model.pose_checkpoint} (24 Canine Keypoints)`;
-    tFps.textContent = `${data.video.sampled_fps} FPS (Uniform Resampling)`;
-    tWindow.textContent = `${data.temporal.window_length} frames (~2.0s, stride ${data.temporal.stride})`;
-    tFeatures.textContent = "75 in_features (72 normalized pose + 3 reliability)";
-    tTracking.textContent = "Temporal Consistency (IoU & Center Gated)";
-    tCkpt.textContent = data.model.checkpoint;
-    tDevice.textContent = data.model.device;
-
-    // Window probabilities list
-    windowChips.innerHTML = "";
-    if (data.temporal.window_probabilities) {
-      data.temporal.window_probabilities.forEach((p, idx) => {
-        const chip = document.createElement("span");
-        chip.className = "win-chip";
-        chip.textContent = `W${idx + 1}: ${(p * 100).toFixed(1)}%`;
-        windowChips.appendChild(chip);
-      });
+      videoPreviewCard.classList.add("hidden");
     }
 
-    // Scroll to results smoothly
+    // Scroll smoothly to results
     resultsSection.scrollIntoView({ behavior: "smooth" });
   }
 
-  // Frame Scrubber Functions
-  function setFrame(idx) {
-    if (!previewFramesList || previewFramesList.length === 0) return;
-    currentFrameIdx = Math.max(0, Math.min(previewFramesList.length - 1, idx));
-    const f = previewFramesList[currentFrameIdx];
-    frameImgDisplay.src = f.image;
-    frameSlider.value = currentFrameIdx;
-    frameCounterLabel.textContent = `Frame ${currentFrameIdx + 1} / ${previewFramesList.length}`;
-    frameTsLabel.textContent = `(${f.timestamp.toFixed(2)}s)`;
+  function simulateProgressSteps() {
+    progressBarFill.style.width = "20%";
+    const steps = document.querySelectorAll(".pipeline-steps .step-item");
+    steps.forEach((s) => s.classList.remove("active", "completed"));
+
+    steps[0].classList.add("active");
+    progressStageTitle.textContent = "1/5: Running Frozen Video V2 Pipeline...";
+    progressStageDesc.textContent = "Mamba S6 & YOLO Dog Pose tracking (8 FPS, 16-frame windows)";
+
+    setTimeout(() => {
+      progressBarFill.style.width = "40%";
+      steps[0].classList.remove("active");
+      steps[0].classList.add("completed");
+      steps[1].classList.add("active");
+      progressStageTitle.textContent = "2/5: Extracting Embedded Audio Track...";
+      progressStageDesc.textContent = "Extracting and resampling embedded audio to 16 kHz mono PCM";
+    }, 800);
+
+    setTimeout(() => {
+      progressBarFill.style.width = "65%";
+      steps[1].classList.remove("active");
+      steps[1].classList.add("completed");
+      steps[2].classList.add("active");
+      progressStageTitle.textContent = "3/5: Running Frozen Audio V2 Pipeline...";
+      progressStageDesc.textContent = "AudioNet v2 & Isotonic Calibration (64 mel bands, 3.0s windows)";
+    }, 1600);
+
+    setTimeout(() => {
+      progressBarFill.style.width = "85%";
+      steps[2].classList.remove("active");
+      steps[2].classList.add("completed");
+      steps[3].classList.add("active");
+      progressStageTitle.textContent = "4/5: Synchronizing Streams on 0.5s Temporal Grid...";
+      progressStageDesc.textContent = "Calculating reliability-modulated dynamic weights Wv, Wa";
+    }, 2400);
+
+    setTimeout(() => {
+      progressBarFill.style.width = "95%";
+      steps[3].classList.remove("active");
+      steps[3].classList.add("completed");
+      steps[4].classList.add("active");
+      progressStageTitle.textContent = "5/5: Executing Dynamic Late Fusion...";
+      progressStageDesc.textContent = "Computing Multimodal Behavioral Risk Score & Risk Band";
+    }, 3200);
   }
 
-  function toggleFramePlay() {
-    if (framePlayInterval) {
-      clearInterval(framePlayInterval);
-      framePlayInterval = null;
-      btnPlayFrames.textContent = "Play";
-    } else {
-      btnPlayFrames.textContent = "Pause";
-      framePlayInterval = setInterval(() => {
-        let next = currentFrameIdx + 1;
-        if (next >= previewFramesList.length) next = 0;
-        setFrame(next);
-      }, 125); // 8 FPS
-    }
+  function finishProgress() {
+    progressBarFill.style.width = "100%";
+    const steps = document.querySelectorAll(".pipeline-steps .step-item");
+    steps.forEach((s) => s.classList.add("completed"));
   }
 
-  frameSlider.addEventListener("input", (e) => {
-    if (framePlayInterval) toggleFramePlay();
-    setFrame(parseInt(e.target.value));
-  });
-
-  btnPrevFrame.addEventListener("click", () => {
-    if (framePlayInterval) toggleFramePlay();
-    setFrame(currentFrameIdx - 1);
-  });
-
-  btnNextFrame.addEventListener("click", () => {
-    if (framePlayInterval) toggleFramePlay();
-    setFrame(currentFrameIdx + 1);
-  });
-
-  btnPlayFrames.addEventListener("click", () => {
-    toggleFramePlay();
-  });
-
-  // Tab Switching
-  function showTab(tabName) {
-    tabAnnotated.classList.remove("active");
-    tabFrames.classList.remove("active");
-    tabOriginal.classList.remove("active");
-    playerAnnotated.classList.add("hidden");
-    frameInspectorView.classList.add("hidden");
-    playerOriginal.classList.add("hidden");
-
-    if (framePlayInterval && tabName !== "frames") {
-      toggleFramePlay();
-    }
-
-    if (tabName === "annotated") {
-      tabAnnotated.classList.add("active");
-      playerAnnotated.classList.remove("hidden");
-      playerAnnotated.play().catch(() => {});
-    } else if (tabName === "frames") {
-      tabFrames.classList.add("active");
-      frameInspectorView.classList.remove("hidden");
-    } else if (tabName === "original") {
-      tabOriginal.classList.add("active");
-      playerOriginal.classList.remove("hidden");
-      playerOriginal.play().catch(() => {});
-    }
-  }
-
-  tabAnnotated.addEventListener("click", () => showTab("annotated"));
-  tabFrames.addEventListener("click", () => showTab("frames"));
-  tabOriginal.addEventListener("click", () => showTab("original"));
-
-  // Automatic fallback if browser cannot decode video track
-  playerAnnotated.addEventListener("error", (e) => {
-    console.warn("Annotated video element error, falling back to Frame Inspector:", e);
-    if (previewFramesList && previewFramesList.length > 0) {
-      showTab("frames");
-    }
-  });
-
-  // Accordion Toggle
-  toggleTechDetails.addEventListener("click", () => {
-    toggleTechDetails.classList.toggle("expanded");
-    techDetailsContent.classList.toggle("hidden");
-  });
-
-  // Export JSON
-  btnDownloadJson.addEventListener("click", () => {
-    if (!lastInferenceResult) return;
-    const str = JSON.stringify(lastInferenceResult, null, 2);
-    const blob = new Blob([str], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `inference_${lastInferenceResult.video.filename.replace(/\.[^/.]+$/, "")}.json`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  });
-
-  // View Manifest Modal
-  btnViewManifest.addEventListener("click", () => {
-    manifestModal.classList.remove("hidden");
-    fetch("/api/manifest")
-      .then(res => res.json())
-      .then(data => {
-        manifestPre.textContent = JSON.stringify(data, null, 2);
-      })
-      .catch(err => {
-        manifestPre.textContent = "Error loading manifest: " + err.message;
-      });
-  });
-
-  btnCloseModal.addEventListener("click", () => {
-    manifestModal.classList.add("hidden");
-  });
-
-  manifestModal.addEventListener("click", (e) => {
-    if (e.target === manifestModal) {
-      manifestModal.classList.add("hidden");
-    }
-  });
-
-  // Analyze Another Video
-  btnAnalyzeAnother.addEventListener("click", () => {
-    resultsSection.classList.add("hidden");
-    uploadSection.classList.remove("hidden");
-    resetSelection();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-
-  // Error Card Helper
   function showError(title, msg) {
     errorTitle.textContent = title;
     errorMessage.textContent = msg;
     errorCard.classList.remove("hidden");
+    errorCard.scrollIntoView({ behavior: "smooth" });
   }
 
   function hideError() {
     errorCard.classList.add("hidden");
   }
-
-  btnDismissError.addEventListener("click", hideError);
 });
